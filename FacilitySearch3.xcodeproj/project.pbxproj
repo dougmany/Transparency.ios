@@ -13,6 +13,13 @@
 		9177C5F4258E612800929C5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9177C5F3258E612800929C5C /* Preview Assets.xcassets */; };
 		9177C5FF258E612800929C5C /* FacilitySearch3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C5FE258E612800929C5C /* FacilitySearch3Tests.swift */; };
 		9177C60A258E612800929C5C /* FacilitySearch3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C609258E612800929C5C /* FacilitySearch3UITests.swift */; };
+		9177C61B258F234200929C5C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C61A258F234200929C5C /* DataService.swift */; };
+		9177C620258F236200929C5C /* FacilityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C61F258F236200929C5C /* FacilityDetail.swift */; };
+		9177C626258F238900929C5C /* FacilitySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C625258F238900929C5C /* FacilitySearch.swift */; };
+		9177C62E258F23A800929C5C /* FacilityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C62D258F23A800929C5C /* FacilityGroup.swift */; };
+		9177C6382590701700929C5C /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C6372590701700929C5C /* ListView.swift */; };
+		9177C644259073FC00929C5C /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C643259073FC00929C5C /* TypeView.swift */; };
+		9177C64925907ACF00929C5C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C64825907ACF00929C5C /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +52,13 @@
 		9177C605258E612800929C5C /* FacilitySearch3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacilitySearch3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9177C609258E612800929C5C /* FacilitySearch3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearch3UITests.swift; sourceTree = "<group>"; };
 		9177C60B258E612800929C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9177C61A258F234200929C5C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		9177C61F258F236200929C5C /* FacilityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetail.swift; sourceTree = "<group>"; };
+		9177C625258F238900929C5C /* FacilitySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearch.swift; sourceTree = "<group>"; };
+		9177C62D258F23A800929C5C /* FacilityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityGroup.swift; sourceTree = "<group>"; };
+		9177C6372590701700929C5C /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		9177C643259073FC00929C5C /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		9177C64825907ACF00929C5C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +109,8 @@
 		9177C5EB258E612700929C5C /* FacilitySearch3 */ = {
 			isa = PBXGroup;
 			children = (
+				9177C63C2590702600929C5C /* Lists */,
+				9177C624258F237400929C5C /* Models */,
 				9177C5EC258E612700929C5C /* FacilitySearch3App.swift */,
 				9177C5EE258E612700929C5C /* ContentView.swift */,
 				9177C5F0258E612800929C5C /* Assets.xcassets */,
@@ -128,6 +144,27 @@
 				9177C60B258E612800929C5C /* Info.plist */,
 			);
 			path = FacilitySearch3UITests;
+			sourceTree = "<group>";
+		};
+		9177C624258F237400929C5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9177C61A258F234200929C5C /* DataService.swift */,
+				9177C61F258F236200929C5C /* FacilityDetail.swift */,
+				9177C625258F238900929C5C /* FacilitySearch.swift */,
+				9177C62D258F23A800929C5C /* FacilityGroup.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9177C63C2590702600929C5C /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				9177C6372590701700929C5C /* ListView.swift */,
+				9177C643259073FC00929C5C /* TypeView.swift */,
+				9177C64825907ACF00929C5C /* DetailView.swift */,
+			);
+			path = Lists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +296,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9177C61B258F234200929C5C /* DataService.swift in Sources */,
+				9177C64925907ACF00929C5C /* DetailView.swift in Sources */,
 				9177C5EF258E612700929C5C /* ContentView.swift in Sources */,
+				9177C6382590701700929C5C /* ListView.swift in Sources */,
+				9177C62E258F23A800929C5C /* FacilityGroup.swift in Sources */,
+				9177C626258F238900929C5C /* FacilitySearch.swift in Sources */,
 				9177C5ED258E612700929C5C /* FacilitySearch3App.swift in Sources */,
+				9177C644259073FC00929C5C /* TypeView.swift in Sources */,
+				9177C620258F236200929C5C /* FacilityDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
