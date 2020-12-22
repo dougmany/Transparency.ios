@@ -15,20 +15,25 @@ struct ListView: View {
     
     var body: some View {
         List(list, id: \.FACILITYNUMBER) { item in
-            NavigationLink(item.FACILITYNAME, destination: Text(item.FACILITYNAME))
+            NavigationLink(item.FACILITYNAME, destination: DetailView(selectedFacilityNumber: item.FACILITYNUMBER))
                 .padding()
-                .navigationTitle(selectedName)
         }.onAppear(perform: loadData)
+        .navigationTitle(selectedName)
     }
 
     func loadData() {
-        let parameters = facilitySearchParameters(facType: "\(self.selectedType)", facility: "", Street: "", city: "", zip: "", county: "", facnum: "")
+        let parameters = facilitySearchParameters()
+        parameters.facType = "\(self.selectedType)"
         
         DataService.shared.fetchFacilityList(parameters: parameters) { (result) in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let data):
-                        list = data
+                        if data.count == 0 {
+                            list = [facilitySearch(COUNTY: "", FACILITYNAME: "None Found", FACILITYNUMBER: "",STATUS: "", STREETADDRESS:"", TELEPHONE:"", ZIPCODE: "")]
+                        } else {
+                            list = data
+                        }
                     case .failure(let error):
                         print(error)
                 }

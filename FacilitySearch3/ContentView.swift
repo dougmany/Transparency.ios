@@ -8,31 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var facilityTypes = [facilityGroup]()
+    @ObservedObject var parameters = facilitySearchParameters()
     
     var body: some View {
         NavigationView {
-            List(facilityTypes, id: \.id) { item in
-                NavigationLink(item.display_name, destination: TypeView(types: item.facility_type, selectedGroup: item.display_name))
-                    .padding()
-                    .navigationTitle("Groups")
-            }.onAppear(perform: loadData)
-        }
-    }
-    
-    func loadData() {
-        DataService.shared.fetchFacilityGroups() { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                    case .success(let groups):
-                        self.facilityTypes = groups.groups
-                    case .failure(let error):
-                        print(error)
+            Form{
+                NavigationLink("Search", destination: self.parameters.facnum == "" ?  AnyView(GroupView()): AnyView(DetailView(selectedFacilityNumber: self.parameters.facnum)))
+                Section(header: Text("Facility Number")){
+                    TextField("Facility Number", text: $parameters.facnum)
+                }
+                TextField("Facility Name", text: $parameters.facility)
+                //TextField("Street", text: $parameters.Street)
+                TextField("City", text: $parameters.city)
+                TextField("Zip", text: $parameters.zip)
+                Picker(selection: $parameters.county, label: Text("County")) {
+                    ForEach(parameters.counties, id: \.self){county in
+                        Text(county)
+                    }
+                }
+                Section(){
+                    NavigationLink("Search", destination: GroupView())
                 }
             }
-        }
+        }.navigationTitle("Groups")
     }
 }
+
 
 
 struct ContentView_Previews: PreviewProvider {

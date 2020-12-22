@@ -10,49 +10,52 @@ import SwiftUI
 struct DetailView: View {
     let selectedFacilityNumber: String
     
-    @State var selectedFacility: FacilityDetail
+    @State var selectedFacility = FacilityDetail(CAPACITY: "Capacity", CITY: "City", CONTACT: "Contact", COUNTY: "County", DISTRICTOFFICE: "DO", DOADDRESS: "DO Address", DOCITY: "DO City", DOSTATE: "DO State", DOTELEPHONE: "DO Phone", DOZIPCODE: "O Zip", FACILITYNAME: "Name", FACILITYNUMBER: "Number", FACILITYTYPE: "Type", LASTVISITDATE: "", LICENSEEFFECTIVEDATE: "", LICENSEFIRSTDATE: "", LICENSEENAME: "Lic Name", NBRALLVISITS: "", NBRCMPLTVISITS: "", NBRCMPLTTYPA: "", NBRCMPLTTYPB: "", NBRCMPLTINC: "", NBRCMPLTUNS: "", NBRCMPLTSUB: "", NBRCMPLTUNF: "", NBRINSPVISITS: "", NBRINSPTYPA: "", NBRINSPTYPB: "", NBROTHERVISITS: "", NBROTHERTYPA: "", NBROTHERTYPB: "", STATE: "State", STATUS: "Status", STREETADDRESS: "Street", TELEPHONE: "Phone", VSTDATEALL: "", VSTDATECMPLT: "", VSTDATEINSP: "", VSTDATEOTHER: "", ZIPCODE: "", TOTCMPVISITS: "", TOTSUBALG: "", TOTINCALG: "", TOTUNSALG: "", TOTUNFALG: "", TOTTYPEA: "", TOTTYPEB: "", CMPCOUNT: 0, COMPLAINTARRAY: [complaint(CONTROLNUMBER: "", APPROVEDATE: "", SUBALLEGATIONS: "", INCALLEGATIONS: "", UNSALLEGATIONS: "", UNFALLEGATIONS: "", CITTYPEA: "", CITTYPEB: "", NUMCMPVISITS: "selectedFacility", CMPVISITDATES: "")])
     
     var body: some View {
         VStack {
             Text(selectedFacility.FACILITYNAME)
             Text(selectedFacility.STATUS)
+            Divider()
             Group {
                 Text(selectedFacility.STREETADDRESS)
-                Text(selectedFacility.CITY)
+                Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
                 Text(selectedFacility.LICENSEENAME)
             }
+            Divider()
             HStack {
-                VStack {
+                VStack(alignment: .leading) {
                     Text("Phone:")
                     Text("Facililty Number:")
                     Text("Capacity:")
                     Text("Facillity Type:")
                 }
-                VStack {
-                    Text(selectedFacility.STREETADDRESS)
-                    Text(selectedFacility.CITY)
+                VStack(alignment: .leading) {
+                    Text(selectedFacility.TELEPHONE)
+                    Text(selectedFacility.FACILITYNUMBER)
                     Text(selectedFacility.CAPACITY)
-                    Text(selectedFacility.LICENSEENAME)
+                    Text(selectedFacility.FACILITYTYPE)
                 }
             }
-            Text("State Licensing Office Contact Information")
-            HStack{
-                VStack{
-                    Text("Address:")
-                    Text("")
-                    Text("Phone:")
-                }
-                VStack{
-                    Text(selectedFacility.DOADDRESS)
-                    Text(selectedFacility.DOCITY)
-                    Text(selectedFacility.DOTELEPHONE)
+            Divider()
+            VStack {
+                Text("State Licensing Office Contact Information")
+                HStack{
+                    VStack{
+                        Text("Address:")
+                        Text("")
+                        Text("Phone:")
+                    }
+                    VStack{
+                        Text(selectedFacility.DOADDRESS)
+                        Text(selectedFacility.DOCITY)
+                        Text(selectedFacility.DOTELEPHONE)
+                    }
                 }
             }
-            
-                    .padding()
-                    .navigationTitle(selectedFacility.FACILITYNAME)
-                
         }.onAppear(perform: loadData)
+        .navigationTitle(selectedFacility.FACILITYNAME)
+    
     }
 
     func loadData() {
