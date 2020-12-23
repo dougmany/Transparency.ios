@@ -17,14 +17,14 @@ struct DetailView: View {
             Text(selectedFacility.FACILITYNAME)
             Text(selectedFacility.STATUS)
             Divider()
-            Group {
+            VStack {
                 Text(selectedFacility.STREETADDRESS)
                 Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
                 Text(selectedFacility.LICENSEENAME)
             }
             Divider()
             HStack {
-                VStack(alignment: .leading) {
+                VStack(alignment: .trailing) {
                     Text("Phone:")
                     Text("Facililty Number:")
                     Text("Capacity:")
@@ -39,14 +39,14 @@ struct DetailView: View {
             }
             Divider()
             VStack {
-                Text("State Licensing Office Contact Information")
+                Text("State Licensing Office Contact Information:")
                 HStack{
-                    VStack{
+                    VStack(alignment: .trailing){
                         Text("Address:")
                         Text("")
                         Text("Phone:")
                     }
-                    VStack{
+                    VStack(alignment: .leading){
                         Text(selectedFacility.DOADDRESS)
                         Text(selectedFacility.DOCITY)
                         Text(selectedFacility.DOTELEPHONE)

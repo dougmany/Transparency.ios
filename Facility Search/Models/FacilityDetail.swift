@@ -65,6 +65,7 @@ struct FacilityDetail: Decodable{
     var TOTTYPEB: String
     var CMPCOUNT: Int
     var COMPLAINTARRAY: [complaint?]
+    var MapLink: String { "https//maps.apple.com/?address=\(STREETADDRESS),\(CITY),\(STATE)"}
 }
 
 struct TSO: Decodable{

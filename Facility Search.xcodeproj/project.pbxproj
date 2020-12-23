@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9177C5ED258E612700929C5C /* FacilitySearch3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C5EC258E612700929C5C /* FacilitySearch3App.swift */; };
-		9177C5EF258E612700929C5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C5EE258E612700929C5C /* ContentView.swift */; };
+		9177C5EF258E612700929C5C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C5EE258E612700929C5C /* HomeView.swift */; };
 		9177C5F1258E612800929C5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9177C5F0258E612800929C5C /* Assets.xcassets */; };
 		9177C5F4258E612800929C5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9177C5F3258E612800929C5C /* Preview Assets.xcassets */; };
-		9177C5FF258E612800929C5C /* FacilitySearch3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C5FE258E612800929C5C /* FacilitySearch3Tests.swift */; };
-		9177C60A258E612800929C5C /* FacilitySearch3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C609258E612800929C5C /* FacilitySearch3UITests.swift */; };
 		9177C61B258F234200929C5C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C61A258F234200929C5C /* DataService.swift */; };
 		9177C620258F236200929C5C /* FacilityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C61F258F236200929C5C /* FacilityDetail.swift */; };
 		9177C626258F238900929C5C /* FacilitySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C625258F238900929C5C /* FacilitySearch.swift */; };
@@ -23,35 +21,16 @@
 		9177C6542591C20B00929C5C /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C6532591C20A00929C5C /* GroupView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9177C5FB258E612800929C5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9177C5E1258E612700929C5C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9177C5E8258E612700929C5C;
-			remoteInfo = FacilitySearch3;
-		};
-		9177C606258E612800929C5C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9177C5E1258E612700929C5C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9177C5E8258E612700929C5C;
-			remoteInfo = FacilitySearch3;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		9177C5E9258E612700929C5C /* FacilitySearch3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacilitySearch3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9177C5E9258E612700929C5C /* Facility Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facility Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9177C5EC258E612700929C5C /* FacilitySearch3App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearch3App.swift; sourceTree = "<group>"; };
-		9177C5EE258E612700929C5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9177C5EE258E612700929C5C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9177C5F0258E612800929C5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9177C5F3258E612800929C5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9177C5F5258E612800929C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9177C5FA258E612800929C5C /* FacilitySearch3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacilitySearch3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9177C5FE258E612800929C5C /* FacilitySearch3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearch3Tests.swift; sourceTree = "<group>"; };
+		9177C5FE258E612800929C5C /* Facility SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Facility SearchTests.swift"; sourceTree = "<group>"; };
 		9177C600258E612800929C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9177C605258E612800929C5C /* FacilitySearch3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacilitySearch3UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9177C609258E612800929C5C /* FacilitySearch3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearch3UITests.swift; sourceTree = "<group>"; };
+		9177C609258E612800929C5C /* Facility SearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Facility SearchUITests.swift"; sourceTree = "<group>"; };
 		9177C60B258E612800929C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9177C61A258F234200929C5C /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		9177C61F258F236200929C5C /* FacilityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetail.swift; sourceTree = "<group>"; };
@@ -71,29 +50,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9177C5F7258E612800929C5C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9177C602258E612800929C5C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		9177C5E0258E612700929C5C = {
 			isa = PBXGroup;
 			children = (
-				9177C5EB258E612700929C5C /* FacilitySearch3 */,
-				9177C5FD258E612800929C5C /* FacilitySearch3Tests */,
-				9177C608258E612800929C5C /* FacilitySearch3UITests */,
+				9177C5EB258E612700929C5C /* Facility Search */,
+				9177C5FD258E612800929C5C /* Facility SearchTests */,
+				9177C608258E612800929C5C /* Facility SearchUITests */,
 				9177C5EA258E612700929C5C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,25 +66,22 @@
 		9177C5EA258E612700929C5C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9177C5E9258E612700929C5C /* FacilitySearch3.app */,
-				9177C5FA258E612800929C5C /* FacilitySearch3Tests.xctest */,
-				9177C605258E612800929C5C /* FacilitySearch3UITests.xctest */,
+				9177C5E9258E612700929C5C /* Facility Search.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9177C5EB258E612700929C5C /* FacilitySearch3 */ = {
+		9177C5EB258E612700929C5C /* Facility Search */ = {
 			isa = PBXGroup;
 			children = (
 				9177C63C2590702600929C5C /* Views */,
 				9177C624258F237400929C5C /* Models */,
 				9177C5EC258E612700929C5C /* FacilitySearch3App.swift */,
-				9177C5EE258E612700929C5C /* ContentView.swift */,
 				9177C5F0258E612800929C5C /* Assets.xcassets */,
 				9177C5F5258E612800929C5C /* Info.plist */,
 				9177C5F2258E612800929C5C /* Preview Content */,
 			);
-			path = FacilitySearch3;
+			path = "Facility Search";
 			sourceTree = "<group>";
 		};
 		9177C5F2258E612800929C5C /* Preview Content */ = {
@@ -130,22 +92,22 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		9177C5FD258E612800929C5C /* FacilitySearch3Tests */ = {
+		9177C5FD258E612800929C5C /* Facility SearchTests */ = {
 			isa = PBXGroup;
 			children = (
-				9177C5FE258E612800929C5C /* FacilitySearch3Tests.swift */,
+				9177C5FE258E612800929C5C /* Facility SearchTests.swift */,
 				9177C600258E612800929C5C /* Info.plist */,
 			);
-			path = FacilitySearch3Tests;
+			path = "Facility SearchTests";
 			sourceTree = "<group>";
 		};
-		9177C608258E612800929C5C /* FacilitySearch3UITests */ = {
+		9177C608258E612800929C5C /* Facility SearchUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9177C609258E612800929C5C /* FacilitySearch3UITests.swift */,
+				9177C609258E612800929C5C /* Facility SearchUITests.swift */,
 				9177C60B258E612800929C5C /* Info.plist */,
 			);
-			path = FacilitySearch3UITests;
+			path = "Facility SearchUITests";
 			sourceTree = "<group>";
 		};
 		9177C624258F237400929C5C /* Models */ = {
@@ -162,6 +124,7 @@
 		9177C63C2590702600929C5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9177C5EE258E612700929C5C /* HomeView.swift */,
 				9177C6532591C20A00929C5C /* GroupView.swift */,
 				9177C643259073FC00929C5C /* TypeView.swift */,
 				9177C6372590701700929C5C /* ListView.swift */,
@@ -173,9 +136,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9177C5E8258E612700929C5C /* FacilitySearch3 */ = {
+		9177C5E8258E612700929C5C /* Facility Search */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9177C60E258E612800929C5C /* Build configuration list for PBXNativeTarget "FacilitySearch3" */;
+			buildConfigurationList = 9177C60E258E612800929C5C /* Build configuration list for PBXNativeTarget "Facility Search" */;
 			buildPhases = (
 				9177C5E5258E612700929C5C /* Sources */,
 				9177C5E6258E612700929C5C /* Frameworks */,
@@ -185,46 +148,10 @@
 			);
 			dependencies = (
 			);
-			name = FacilitySearch3;
+			name = "Facility Search";
 			productName = FacilitySearch3;
-			productReference = 9177C5E9258E612700929C5C /* FacilitySearch3.app */;
+			productReference = 9177C5E9258E612700929C5C /* Facility Search.app */;
 			productType = "com.apple.product-type.application";
-		};
-		9177C5F9258E612800929C5C /* FacilitySearch3Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9177C611258E612800929C5C /* Build configuration list for PBXNativeTarget "FacilitySearch3Tests" */;
-			buildPhases = (
-				9177C5F6258E612800929C5C /* Sources */,
-				9177C5F7258E612800929C5C /* Frameworks */,
-				9177C5F8258E612800929C5C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9177C5FC258E612800929C5C /* PBXTargetDependency */,
-			);
-			name = FacilitySearch3Tests;
-			productName = FacilitySearch3Tests;
-			productReference = 9177C5FA258E612800929C5C /* FacilitySearch3Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9177C604258E612800929C5C /* FacilitySearch3UITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9177C614258E612800929C5C /* Build configuration list for PBXNativeTarget "FacilitySearch3UITests" */;
-			buildPhases = (
-				9177C601258E612800929C5C /* Sources */,
-				9177C602258E612800929C5C /* Frameworks */,
-				9177C603258E612800929C5C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9177C607258E612800929C5C /* PBXTargetDependency */,
-			);
-			name = FacilitySearch3UITests;
-			productName = FacilitySearch3UITests;
-			productReference = 9177C605258E612800929C5C /* FacilitySearch3UITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -238,17 +165,9 @@
 					9177C5E8258E612700929C5C = {
 						CreatedOnToolsVersion = 12.3;
 					};
-					9177C5F9258E612800929C5C = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = 9177C5E8258E612700929C5C;
-					};
-					9177C604258E612800929C5C = {
-						CreatedOnToolsVersion = 12.3;
-						TestTargetID = 9177C5E8258E612700929C5C;
-					};
 				};
 			};
-			buildConfigurationList = 9177C5E4258E612700929C5C /* Build configuration list for PBXProject "FacilitySearch3" */;
+			buildConfigurationList = 9177C5E4258E612700929C5C /* Build configuration list for PBXProject "Facility Search" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -261,9 +180,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9177C5E8258E612700929C5C /* FacilitySearch3 */,
-				9177C5F9258E612800929C5C /* FacilitySearch3Tests */,
-				9177C604258E612800929C5C /* FacilitySearch3UITests */,
+				9177C5E8258E612700929C5C /* Facility Search */,
 			);
 		};
 /* End PBXProject section */
@@ -278,20 +195,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9177C5F8258E612800929C5C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9177C603258E612800929C5C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -302,7 +205,7 @@
 				9177C61B258F234200929C5C /* DataService.swift in Sources */,
 				9177C64925907ACF00929C5C /* DetailView.swift in Sources */,
 				9177C6542591C20B00929C5C /* GroupView.swift in Sources */,
-				9177C5EF258E612700929C5C /* ContentView.swift in Sources */,
+				9177C5EF258E612700929C5C /* HomeView.swift in Sources */,
 				9177C6382590701700929C5C /* ListView.swift in Sources */,
 				9177C62E258F23A800929C5C /* FacilityGroup.swift in Sources */,
 				9177C626258F238900929C5C /* FacilitySearch.swift in Sources */,
@@ -312,36 +215,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9177C5F6258E612800929C5C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9177C5FF258E612800929C5C /* FacilitySearch3Tests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9177C601258E612800929C5C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9177C60A258E612800929C5C /* FacilitySearch3UITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9177C5FC258E612800929C5C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9177C5E8258E612700929C5C /* FacilitySearch3 */;
-			targetProxy = 9177C5FB258E612800929C5C /* PBXContainerItemProxy */;
-		};
-		9177C607258E612800929C5C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9177C5E8258E612700929C5C /* FacilitySearch3 */;
-			targetProxy = 9177C606258E612800929C5C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9177C60C258E612800929C5C /* Debug */ = {
@@ -466,16 +340,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"FacilitySearch3/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Facility Search/Preview Content\"";
 				DEVELOPMENT_TEAM = B7E3B4Q64C;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = FacilitySearch3/Info.plist;
+				INFOPLIST_FILE = "Facility Search/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.FacilitySearch3;
+				MARKETING_VERSION = 11.19.1;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.transparency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -488,110 +363,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"FacilitySearch3/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Facility Search/Preview Content\"";
 				DEVELOPMENT_TEAM = B7E3B4Q64C;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = FacilitySearch3/Info.plist;
+				INFOPLIST_FILE = "Facility Search/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.FacilitySearch3;
+				MARKETING_VERSION = 11.19.1;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.transparency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		9177C612258E612800929C5C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7E3B4Q64C;
-				INFOPLIST_FILE = FacilitySearch3Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.FacilitySearch3Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FacilitySearch3.app/FacilitySearch3";
-			};
-			name = Debug;
-		};
-		9177C613258E612800929C5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7E3B4Q64C;
-				INFOPLIST_FILE = FacilitySearch3Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.FacilitySearch3Tests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FacilitySearch3.app/FacilitySearch3";
-			};
-			name = Release;
-		};
-		9177C615258E612800929C5C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7E3B4Q64C;
-				INFOPLIST_FILE = FacilitySearch3UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.FacilitySearch3UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FacilitySearch3;
-			};
-			name = Debug;
-		};
-		9177C616258E612800929C5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7E3B4Q64C;
-				INFOPLIST_FILE = FacilitySearch3UITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = gov.ca.dss.FacilitySearch3UITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FacilitySearch3;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9177C5E4258E612700929C5C /* Build configuration list for PBXProject "FacilitySearch3" */ = {
+		9177C5E4258E612700929C5C /* Build configuration list for PBXProject "Facility Search" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9177C60C258E612800929C5C /* Debug */,
@@ -600,29 +392,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9177C60E258E612800929C5C /* Build configuration list for PBXNativeTarget "FacilitySearch3" */ = {
+		9177C60E258E612800929C5C /* Build configuration list for PBXNativeTarget "Facility Search" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9177C60F258E612800929C5C /* Debug */,
 				9177C610258E612800929C5C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9177C611258E612800929C5C /* Build configuration list for PBXNativeTarget "FacilitySearch3Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9177C612258E612800929C5C /* Debug */,
-				9177C613258E612800929C5C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9177C614258E612800929C5C /* Build configuration list for PBXNativeTarget "FacilitySearch3UITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9177C615258E612800929C5C /* Debug */,
-				9177C616258E612800929C5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
