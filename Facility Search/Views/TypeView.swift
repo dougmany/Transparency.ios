@@ -13,12 +13,13 @@ struct TypeView: View {
     
     var body: some View {
         List(types, id: \.id) { item in
-            NavigationLink(item.display_name, destination: ListView(selectedType: item.id, selectedName: item.display_name))
-                .padding()
-                .navigationTitle(selectedGroup)
-        }
+            NavigationLink(destination: ListView(selectedType: item.id, selectedName: item.display_name)) {
+                LinkItemView(name: item.display_name, description: item.description)
+            }                
+        }.navigationTitle(selectedGroup)
     }
 }
+
 
 struct TypeView_Previews: PreviewProvider {
     static var previews: some View {

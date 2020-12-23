@@ -11,35 +11,34 @@ struct ContentView: View {
     @ObservedObject var parameters = facilitySearchParameters()
     
     var body: some View {
-        NavigationView {
-            VStack{
-                Form{
+        VStack{
+            NavigationView {
+                VStack{
                     Image("Logo")
-                    Text("CDSS Facility Search")
-                    NavigationLink("Search", destination: self.parameters.facnum == "" ?  AnyView(GroupView()): AnyView(DetailView(selectedFacilityNumber: self.parameters.facnum)))
-                    Section(header: Text("Facility Number")){
-                        TextField("Facility Number", text: $parameters.facnum)
-                    }
-                    TextField("Facility Name", text: $parameters.facility)
-                    //TextField("Street", text: $parameters.Street)
-                    TextField("City", text: $parameters.city)
-                    TextField("Zip", text: $parameters.zip)
-                    Picker(selection: $parameters.county, label: Text("County")) {
-                        ForEach(parameters.counties, id: \.self){county in
-                            Text(county)
+                    Text("CDSS Care Facility Search")
+                    Form{
+                        Section{
+                            TextField("Facility Number", text: $parameters.facnum)
+                            NavigationLink("Search", destination: self.parameters.facnum == "" ?  AnyView(GroupView()): AnyView(DetailView(selectedFacilityNumber: self.parameters.facnum)))
+                        }
+                        Section{
+                            TextField("Facility Name", text: $parameters.facility)
+                            //TextField("Street", text: $parameters.Street)
+                            TextField("City", text: $parameters.city)
+                            TextField("Zip", text: $parameters.zip)
+                            Picker(selection: $parameters.county, label: Text("County")) {
+                                ForEach(parameters.counties, id: \.self){county in
+                                    Text(county)
+                                }
+                            }
+                            NavigationLink("Search", destination: GroupView())
                         }
                     }
-                    Section(){
-                        NavigationLink("Search", destination: GroupView())
-                    }
                 }
-                Spacer()
             }
         }.navigationTitle("Groups")
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

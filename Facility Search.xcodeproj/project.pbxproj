@@ -19,6 +19,7 @@
 		9177C644259073FC00929C5C /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C643259073FC00929C5C /* TypeView.swift */; };
 		9177C64925907ACF00929C5C /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C64825907ACF00929C5C /* DetailView.swift */; };
 		9177C6542591C20B00929C5C /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9177C6532591C20A00929C5C /* GroupView.swift */; };
+		918A25FF259301CE003F850E /* LinkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A25FE259301CE003F850E /* LinkItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		9177C643259073FC00929C5C /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		9177C64825907ACF00929C5C /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		9177C6532591C20A00929C5C /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		918A25FE259301CE003F850E /* LinkItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				9177C643259073FC00929C5C /* TypeView.swift */,
 				9177C6372590701700929C5C /* ListView.swift */,
 				9177C64825907ACF00929C5C /* DetailView.swift */,
+				918A25FE259301CE003F850E /* LinkItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918A25FF259301CE003F850E /* LinkItemView.swift in Sources */,
 				9177C61B258F234200929C5C /* DataService.swift in Sources */,
 				9177C64925907ACF00929C5C /* DetailView.swift in Sources */,
 				9177C6542591C20B00929C5C /* GroupView.swift in Sources */,

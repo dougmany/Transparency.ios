@@ -15,12 +15,13 @@ struct ListView: View {
     
     var body: some View {
         List(list, id: \.FACILITYNUMBER) { item in
-            NavigationLink(item.FACILITYNAME, destination: DetailView(selectedFacilityNumber: item.FACILITYNUMBER))
-                .padding()
+            NavigationLink(destination: DetailView(selectedFacilityNumber: item.FACILITYNUMBER)) {
+                LinkItemView(name: item.FACILITYNAME, description: item.STREETADDRESS)
+            }
         }.onAppear(perform: loadData)
         .navigationTitle(selectedName)
     }
-
+    
     func loadData() {
         let parameters = facilitySearchParameters()
         parameters.facType = "\(self.selectedType)"
@@ -32,7 +33,8 @@ struct ListView: View {
                         if data.count == 0 {
                             list = [facilitySearch(COUNTY: "", FACILITYNAME: "None Found", FACILITYNUMBER: "",STATUS: "", STREETADDRESS:"", TELEPHONE:"", ZIPCODE: "")]
                         } else {
-                            list = data
+                            self.list = data
+                            self.list.sort { $0.FACILITYNAME < $1.FACILITYNAME }
                         }
                     case .failure(let error):
                         print(error)
