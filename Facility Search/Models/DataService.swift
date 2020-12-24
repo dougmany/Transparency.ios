@@ -113,4 +113,62 @@ class DataService {
                 
             }.resume()
     }
+    
+    //https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=340317938&inx=0
+    func fetchFacilityReport(facilityNumber: String, index: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+        var componentUrl = createURLComponents(path: "/transparencyapi/api/FacilityReports/")
+        componentUrl.queryItems = [ URLQueryItem(name: "facNum", value: facilityNumber), URLQueryItem(name: "inx", value: index) ]
+          
+            guard let validURL = componentUrl.url else {
+                print("URL creation failed...")
+                return
+            }
+            
+            URLSession.shared.dataTask(with: validURL) { (data, response, error) in
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("API status: \(httpResponse.statusCode)")
+                }
+                
+                guard let validData = data, error == nil else {
+                    completion(.failure(error!))
+                    return
+                }
+
+                let data = String(decoding: validData, as: UTF8.self)
+                completion(.success(data))
+                
+            }.resume()
+    }
+    
+    func fetchFacilityReportList(facilityNumber: String, completion: @escaping (Result<[ReportInfo], Error>) -> Void) {
+        
+        let componentUrl = createURLComponents(path: "/transparencyapi/api/FacilityReports/\(facilityNumber)")
+
+            guard let validURL = componentUrl.url else {
+                print("URL creation failed...")
+                return
+            }
+            
+            URLSession.shared.dataTask(with: validURL) { (data, response, error) in
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("API status: \(httpResponse.statusCode)")
+                }
+                
+                guard let validData = data, error == nil else {
+                    completion(.failure(error!))
+                    return
+                }
+                
+                do {
+                    let data = try JSONDecoder().decode(ReportList.self, from: validData)
+                    completion(.success(data.REPORTARRAY))
+                } catch let serializationError {
+                    completion(.failure(serializationError))
+                }
+                
+            }.resume()
+    }
 }
