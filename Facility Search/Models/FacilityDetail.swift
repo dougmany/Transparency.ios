@@ -66,6 +66,32 @@ struct FacilityDetail: Decodable{
     var CMPCOUNT: Int
     var COMPLAINTARRAY: [complaint?]
     var MapLink: String { "https//maps.apple.com/?address=\(STREETADDRESS),\(CITY),\(STATE)"}
+    var RcfeType: Bool { FACILITYTYPE == "RESIDENTIAL CARE ELDERLY" || FACILITYTYPE == "RCFE-CONTINUING CARE RETIREMENT COMMUNITY"}
+    var cmpDetails: [String] {
+        var data = [""]
+        for item in COMPLAINTARRAY {
+            if (Int(item?.INCALLEGATIONS ?? "") ?? 0 >= 0) {
+                data.append("Complaint Investigation Completed: \(item?.APPROVEDATE ?? "")")
+                data.append("# Allegations Substantiated: \(item?.SUBALLEGATIONS ?? "" )")
+                data.append("# Allegations Inconclusive: \( item?.INCALLEGATIONS ?? "" )")
+            }
+            if (Int(item?.UNSALLEGATIONS ?? "") ?? 0 >= 0) {
+                data.append("Complaint Investigation Completed: \(item?.APPROVEDATE ?? "")")
+                data.append("# Allegations Substantiated: \(item?.SUBALLEGATIONS ?? "")")
+                data.append("# Allegations Unsubstantiated: \(item?.UNSALLEGATIONS ?? "" )")
+            }
+            
+            if (RcfeType){
+                data.append("# Allegations Unfounded: \( item?.UNFALLEGATIONS ?? "")")
+            }
+            data.append("Type A Citations: \(item?.CITTYPEA ?? "")")
+            data.append("Type B Citations: \(item?.CITTYPEB ?? "")")
+            data.append("# of Visits: \(item?.NUMCMPVISITS ?? "")")
+            data.append("Dates of Visits: \(item?.CMPVISITDATES ?? "")")
+            data.append("")
+        }
+        return data
+    }
 }
 
 struct TSO: Decodable{
