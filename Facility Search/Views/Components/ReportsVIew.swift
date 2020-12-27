@@ -25,7 +25,10 @@ struct ReportsView: View {
         DataService.shared.fetchFacilityReportList(facilityNumber: selectedFacilityNumber) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let data):
+                case .success(var data):
+                    let dateFormatter = DateFormatter();
+                    dateFormatter.dateFormat = "MM/dd/y??"
+                    data.sort { dateFormatter.date(from: $0.REPORTDATE) ?? Date() > dateFormatter.date(from: $1.REPORTDATE) ?? Date()}
                     reportList = data.enumerated().map({ $0 })
                 case .failure(let error):
                     print(error)
