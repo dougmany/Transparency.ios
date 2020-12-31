@@ -22,7 +22,7 @@ struct DetailView: View {
                     VStack {
                         Text(selectedFacility.STREETADDRESS)
                         Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
-                        Text(selectedFacility.TELEPHONE)
+                        Link("\(selectedFacility.TELEPHONE)", destination: URL(string: "tel:\(selectedFacility.telephoneDigits)")!)
                     }
                 }
                 Divider()
@@ -44,10 +44,10 @@ struct DetailView: View {
                 VStack {
                     Text("For information about this facility")
                     Text("Contact State Licensing Office")
-                    VStack(alignment: .leading){
+                    VStack {
                         Text(selectedFacility.DOADDRESS)
-                        Text(selectedFacility.DOCITY)
-                        Text(selectedFacility.DOTELEPHONE)
+                        Text("\(selectedFacility.DOCITY), \(selectedFacility.DOSTATE) \(selectedFacility.DOZIPCODE)")
+                        Link("\(selectedFacility.DOTELEPHONE)", destination: URL(string: "tel:\(selectedFacility.doTelephoneDigits)")!)
                     }
                 }
                 Divider()

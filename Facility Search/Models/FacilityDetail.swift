@@ -65,8 +65,10 @@ struct FacilityDetail: Decodable{
     var TOTTYPEB: String
     var CMPCOUNT: Int
     var COMPLAINTARRAY: [complaint?]
-    var MapLink: String { "https//maps.apple.com/?address=\(STREETADDRESS),\(CITY),\(STATE)"}
-    var RcfeType: Bool { FACILITYTYPE == "RESIDENTIAL CARE ELDERLY" || FACILITYTYPE == "RCFE-CONTINUING CARE RETIREMENT COMMUNITY"}
+    var telephoneDigits: String { return TELEPHONE.replacingOccurrences(of: "[()\\s-]+", with: "", options: .regularExpression)}
+    var doTelephoneDigits: String { return DOTELEPHONE.replacingOccurrences(of: "[()\\s-]+", with: "", options: .regularExpression)}
+    var mapLink: String { return "https//maps.apple.com/?address=\(STREETADDRESS),\(CITY),\(STATE)"}
+    var rcfeType: Bool { FACILITYTYPE == "RESIDENTIAL CARE ELDERLY" || FACILITYTYPE == "RCFE-CONTINUING CARE RETIREMENT COMMUNITY"}
     var cmpDetails: [String] {
         var data = [""]
         for item in COMPLAINTARRAY {
@@ -81,7 +83,7 @@ struct FacilityDetail: Decodable{
                 data.append("# Allegations Unsubstantiated: \(item?.UNSALLEGATIONS ?? "" )")
             }
             
-            if (RcfeType){
+            if (rcfeType){
                 data.append("# Allegations Unfounded: \( item?.UNFALLEGATIONS ?? "")")
             }
             data.append("Type A Citations: \(item?.CITTYPEA ?? "")")

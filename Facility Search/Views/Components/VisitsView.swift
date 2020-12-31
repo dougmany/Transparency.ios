@@ -55,7 +55,7 @@ struct VisitsView: View {
                             Text("Total Allegations Substantiated:")
                             Text("Total Allegations Inconclusive:")
                             Text("Total Allegations Unsubstantiated:")
-                            if selectedFacility.RcfeType {
+                            if selectedFacility.rcfeType {
                                 Text("Total Allegations Unfounded:")
                             }
                         }
@@ -64,7 +64,7 @@ struct VisitsView: View {
                             Text("\(selectedFacility.NBRCMPLTSUB)")
                             Text("\(selectedFacility.NBRCMPLTINC)")
                             Text("\(selectedFacility.NBRCMPLTUNS)")
-                            if selectedFacility.RcfeType {
+                            if selectedFacility.rcfeType {
                                 Text("\(selectedFacility.NBRCMPLTUNF)")
                             }
                         }
