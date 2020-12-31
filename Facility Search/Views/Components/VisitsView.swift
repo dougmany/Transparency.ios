@@ -46,47 +46,49 @@ struct VisitsView: View {
                 }
             }
             Divider()
-            Group{
-                VStack{
-                    Text("Complaints")
-                    HStack{
-                        VStack(alignment: .trailing) {
-                            Text("Total Complaint Investigations Completed:")
-                            Text("Total Allegations Substantiated:")
-                            Text("Total Allegations Inconclusive:")
-                            Text("Total Allegations Unsubstantiated:")
-                            if selectedFacility.rcfeType {
-                                Text("Total Allegations Unfounded:")
+            if selectedFacility.CMPCOUNT > 0 {
+                Group{
+                    VStack{
+                        Text("Complaints")
+                        HStack{
+                            VStack(alignment: .trailing) {
+                                Text("Total Complaint Investigations Completed:")
+                                Text("Total Allegations Substantiated:")
+                                Text("Total Allegations Inconclusive:")
+                                Text("Total Allegations Unsubstantiated:")
+                                if selectedFacility.rcfeType {
+                                    Text("Total Allegations Unfounded:")
+                                }
+                            }
+                            VStack {
+                                Text("\(selectedFacility.CMPCOUNT)")
+                                Text("\(selectedFacility.NBRCMPLTSUB)")
+                                Text("\(selectedFacility.NBRCMPLTINC)")
+                                Text("\(selectedFacility.NBRCMPLTUNS)")
+                                if selectedFacility.rcfeType {
+                                    Text("\(selectedFacility.NBRCMPLTUNF)")
+                                }
                             }
                         }
-                        VStack {
-                            Text("\(selectedFacility.CMPCOUNT)")
-                            Text("\(selectedFacility.NBRCMPLTSUB)")
-                            Text("\(selectedFacility.NBRCMPLTINC)")
-                            Text("\(selectedFacility.NBRCMPLTUNS)")
-                            if selectedFacility.rcfeType {
-                                Text("\(selectedFacility.NBRCMPLTUNF)")
+                        HStack{
+                            VStack(alignment: .trailing) {
+                                Text("Type A Citation:")
+                                Text("Type B Citation:")
+                                Text("Total Complaint Visits:")
+                            }
+                            VStack{
+                                Text("\(selectedFacility.NBRCMPLTTYPA)")
+                                Text("\(selectedFacility.NBRCMPLTTYPB)")
+                                Text("\(selectedFacility.NBRCMPLTVISITS)")
                             }
                         }
                     }
-                    HStack{
-                        VStack(alignment: .trailing) {
-                            Text("Type A Citation:")
-                            Text("Type B Citation:")
-                            Text("Total Complaint Visits:")
+                    Divider()
+                    VStack{
+                        Text("Complaint Details")
+                        ForEach(selectedFacility.cmpDetails, id: \.self) { detail in
+                            Text(detail)
                         }
-                        VStack{
-                            Text("\(selectedFacility.NBRCMPLTTYPA)")
-                            Text("\(selectedFacility.NBRCMPLTTYPB)")
-                            Text("\(selectedFacility.NBRCMPLTVISITS)")
-                        }
-                    }
-                }
-                Divider()
-                VStack{
-                    Text("Complaint Details")
-                    ForEach(selectedFacility.cmpDetails, id: \.self) { detail in
-                        Text(detail)
                     }
                 }
             }
