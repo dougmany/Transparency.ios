@@ -45,8 +45,8 @@ struct VisitsView: View {
                     }
                 }
             }
-            Divider()
             if selectedFacility.CMPCOUNT > 0 {
+                Divider()
                 Group{
                     VStack{
                         Text("Complaints")
