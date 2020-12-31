@@ -22,19 +22,19 @@ struct DetailView: View {
                     VStack {
                         Text(selectedFacility.STREETADDRESS)
                         Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
-                        Text(selectedFacility.LICENSEENAME)
+                        Text(selectedFacility.TELEPHONE)
                     }
                 }
                 Divider()
                 HStack {
                     VStack(alignment: .trailing) {
-                        Text("Phone:")
+                        Text("Licensee Name:")
                         Text("Facililty Number:")
                         Text("Capacity:")
                         Text("Facillity Type:")
                     }
                     VStack(alignment: .leading) {
-                        Text(selectedFacility.TELEPHONE)
+                        Text(selectedFacility.LICENSEENAME)
                         Text(selectedFacility.FACILITYNUMBER)
                         Text(selectedFacility.CAPACITY)
                         Text(selectedFacility.FACILITYTYPE)
@@ -42,18 +42,12 @@ struct DetailView: View {
                 }
                 Divider()
                 VStack {
-                    Text("State Licensing Office Contact Information:")
-                    HStack{
-                        VStack(alignment: .trailing){
-                            Text("Address:")
-                            Text("")
-                            Text("Phone:")
-                        }
-                        VStack(alignment: .leading){
-                            Text(selectedFacility.DOADDRESS)
-                            Text(selectedFacility.DOCITY)
-                            Text(selectedFacility.DOTELEPHONE)
-                        }
+                    Text("For information about this facility")
+                    Text("Contact State Licensing Office")
+                    VStack(alignment: .leading){
+                        Text(selectedFacility.DOADDRESS)
+                        Text(selectedFacility.DOCITY)
+                        Text(selectedFacility.DOTELEPHONE)
                     }
                 }
                 Divider()
@@ -63,7 +57,6 @@ struct DetailView: View {
             }.onAppear(perform: loadData)
             .navigationTitle(selectedFacility.FACILITYNAME)
         }
-        
     }
     
     func loadData() {
