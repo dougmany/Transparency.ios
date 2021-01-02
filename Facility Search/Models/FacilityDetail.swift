@@ -67,7 +67,14 @@ struct FacilityDetail: Decodable{
     var COMPLAINTARRAY: [complaint?]
     var telephoneDigits: String { return TELEPHONE.replacingOccurrences(of: "[()\\s-]+", with: "", options: .regularExpression)}
     var doTelephoneDigits: String { return DOTELEPHONE.replacingOccurrences(of: "[()\\s-]+", with: "", options: .regularExpression)}
-    var mapLink: String { return "https//maps.apple.com/?address=\(STREETADDRESS),\(CITY),\(STATE)"}
+    var mapLink: String {
+        let link =  "http://maps.apple.com/?address=\(STREETADDRESS),\(CITY),\(STATE)"
+        return link.replacingOccurrences(of: "[\\s]+", with: "+", options: .regularExpression)
+    }
+    var doMapLink: String {
+        let link =  "http://maps.apple.com/?address=\(DOADDRESS),\(DOCITY),\(DOSTATE)"
+        return link.replacingOccurrences(of: "[\\s]+", with: "+", options: .regularExpression)
+    }
     var rcfeType: Bool { FACILITYTYPE == "RESIDENTIAL CARE ELDERLY" || FACILITYTYPE == "RCFE-CONTINUING CARE RETIREMENT COMMUNITY"}
     var cmpDetails: [String] {
         var data = [""]
