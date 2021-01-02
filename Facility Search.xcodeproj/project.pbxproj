@@ -25,6 +25,10 @@
 		918A260A25946896003F850E /* ReportList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A260925946896003F850E /* ReportList.swift */; };
 		918A260E25982BF1003F850E /* VisitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A260D25982BF1003F850E /* VisitsView.swift */; };
 		918A261125982ED1003F850E /* ReportsVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A261025982ED1003F850E /* ReportsVIew.swift */; };
+		918A262B25A03355003F850E /* ReportListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A262A25A03355003F850E /* ReportListViewModel.swift */; };
+		918A262F25A04153003F850E /* FacilityGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A262E25A04153003F850E /* FacilityGroupViewModel.swift */; };
+		918A263325A04579003F850E /* FacilitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263225A04579003F850E /* FacilitySearchViewModel.swift */; };
+		918A263825A049A5003F850E /* FacilityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263725A049A5003F850E /* FacilityDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		918A260925946896003F850E /* ReportList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportList.swift; sourceTree = "<group>"; };
 		918A260D25982BF1003F850E /* VisitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsView.swift; sourceTree = "<group>"; };
 		918A261025982ED1003F850E /* ReportsVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsVIew.swift; sourceTree = "<group>"; };
+		918A262A25A03355003F850E /* ReportListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListViewModel.swift; sourceTree = "<group>"; };
+		918A262E25A04153003F850E /* FacilityGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityGroupViewModel.swift; sourceTree = "<group>"; };
+		918A263225A04579003F850E /* FacilitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearchViewModel.swift; sourceTree = "<group>"; };
+		918A263725A049A5003F850E /* FacilityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +135,13 @@
 			children = (
 				9177C61A258F234200929C5C /* DataService.swift */,
 				9177C61F258F236200929C5C /* FacilityDetail.swift */,
+				918A263725A049A5003F850E /* FacilityDetailViewModel.swift */,
 				9177C625258F238900929C5C /* FacilitySearch.swift */,
+				918A263225A04579003F850E /* FacilitySearchViewModel.swift */,
 				9177C62D258F23A800929C5C /* FacilityGroup.swift */,
+				918A262E25A04153003F850E /* FacilityGroupViewModel.swift */,
 				918A260925946896003F850E /* ReportList.swift */,
+				918A262A25A03355003F850E /* ReportListViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,16 +243,20 @@
 				918A25FF259301CE003F850E /* LinkItemView.swift in Sources */,
 				9177C61B258F234200929C5C /* DataService.swift in Sources */,
 				918A260425946368003F850E /* ReportView.swift in Sources */,
+				918A263325A04579003F850E /* FacilitySearchViewModel.swift in Sources */,
 				918A260E25982BF1003F850E /* VisitsView.swift in Sources */,
 				918A2607259464BC003F850E /* HtmlStringView.swift in Sources */,
 				9177C64925907ACF00929C5C /* DetailView.swift in Sources */,
 				918A261125982ED1003F850E /* ReportsVIew.swift in Sources */,
+				918A262F25A04153003F850E /* FacilityGroupViewModel.swift in Sources */,
 				9177C6542591C20B00929C5C /* GroupView.swift in Sources */,
 				9177C5EF258E612700929C5C /* HomeView.swift in Sources */,
 				918A260A25946896003F850E /* ReportList.swift in Sources */,
 				9177C6382590701700929C5C /* ListView.swift in Sources */,
 				9177C62E258F23A800929C5C /* FacilityGroup.swift in Sources */,
+				918A262B25A03355003F850E /* ReportListViewModel.swift in Sources */,
 				9177C626258F238900929C5C /* FacilitySearch.swift in Sources */,
+				918A263825A049A5003F850E /* FacilityDetailViewModel.swift in Sources */,
 				9177C5ED258E612700929C5C /* FacilitySearch3App.swift in Sources */,
 				9177C644259073FC00929C5C /* TypeView.swift in Sources */,
 				9177C620258F236200929C5C /* FacilityDetail.swift in Sources */,
@@ -372,7 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Facility Search/Preview Content\"";
 				DEVELOPMENT_TEAM = B7E3B4Q64C;
 				ENABLE_PREVIEWS = YES;
@@ -396,7 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Facility Search/Preview Content\"";
 				DEVELOPMENT_TEAM = B7E3B4Q64C;
 				ENABLE_PREVIEWS = YES;

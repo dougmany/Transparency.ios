@@ -8,30 +8,21 @@
 import SwiftUI
 
 struct ReportsView: View {
-    let selectedFacilityNumber: String
-    
-    @State var reportList = [ReportInfo(CONTROLNUMBER: "", FACILITYNUMBER: "", REPORTDATE: "", REPORTTITLE: "", REPORTTYPE: "", REPORTPAGE: "")].enumerated().map({ $0 })
+    @ObservedObject var viewModel : ReportListViewModel
     
     var body: some View {
-        VStack{
-            Text("Reports")
-            List(reportList, id: \.element.REPORTDATE) { index, report in
-                NavigationLink("\(report.REPORTTITLE) - \(report.REPORTDATE)", destination: ReportView(selectedFacilityNumber: selectedFacilityNumber, selectedIndex: "\(index)" ))
-            }
-        } .onAppear(perform: loadData)
-    }
-
-    func loadData() {
-        DataService.shared.fetchFacilityReportList(facilityNumber: selectedFacilityNumber) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(var data):
-                    let dateFormatter = DateFormatter();
-                    dateFormatter.dateFormat = "MM/dd/y??"
-                    data.sort { dateFormatter.date(from: $0.REPORTDATE) ?? Date() > dateFormatter.date(from: $1.REPORTDATE) ?? Date()}
-                    reportList = data.enumerated().map({ $0 })
-                case .failure(let error):
-                    print(error)
+        switch viewModel.state {
+        case .idle:
+            Color.clear.onAppear(perform: viewModel.load)
+        case .loading:
+            Text("Loading...")
+        case .failed(let error):
+            Text("An error occured...\(error.localizedDescription)")
+        case .loaded(let reportList):
+            VStack{
+                Text("Reports")
+                List(reportList, id: \.element.REPORTDATE) { index, report in
+                    NavigationLink("\(report.REPORTTITLE) - \(report.REPORTDATE)", destination: ReportView(selectedFacilityNumber: report.FACILITYNUMBER, selectedIndex: "\(index)" ))
                 }
             }
         }
@@ -39,7 +30,7 @@ struct ReportsView: View {
     
     struct Reports_Previews: PreviewProvider {
         static var previews: some View {
-            ReportsView(selectedFacilityNumber: "111111111")
+            ReportsView(viewModel: ReportListViewModel(facilityNumber: "111111111"))
         }
     }
 }

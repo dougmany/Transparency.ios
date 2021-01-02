@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var parameters = facilitySearchParameters()
+    @ObservedObject var parameters = facilitySearchParameters(facilityType: "")
     
     var body: some View {
         VStack{
@@ -19,7 +19,10 @@ struct ContentView: View {
                     Form{
                         Section{
                             TextField("Facility Number", text: $parameters.facnum)
-                            NavigationLink("Search", destination: self.parameters.facnum == "" ?  AnyView(GroupView()): AnyView(DetailView(selectedFacilityNumber: self.parameters.facnum)))
+                            NavigationLink("Search", destination: self.parameters.facnum == "" ?
+                                            AnyView(GroupView(viewModel: FacilityGroupViewModel())):
+                                            AnyView(DetailView(viewModel: FacilityDetailViewModel(facilityNumber: self.parameters.facnum)))
+                            )
                         }
                         Section{
                             TextField("Facility Name", text: $parameters.facility)
@@ -31,7 +34,7 @@ struct ContentView: View {
                                     Text(county)
                                 }
                             }
-                            NavigationLink("Search", destination: GroupView())
+                            NavigationLink("Search", destination: GroupView(viewModel: FacilityGroupViewModel()))
                         }
                     }
                 }

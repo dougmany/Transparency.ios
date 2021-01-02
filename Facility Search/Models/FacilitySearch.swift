@@ -77,8 +77,8 @@ class facilitySearchParameters: ObservableObject {
             "facnum": facnum
         ]
     }
-    init(){
-        self.facType = UserDefaults.standard.object(forKey: "facType") as? String ?? ""
+    init(facilityType: String){
+        self.facType = facilityType
         self.facility = UserDefaults.standard.object(forKey: "facility") as? String ?? ""
         self.Street = UserDefaults.standard.object(forKey: "Street") as? String ?? ""
         self.city = UserDefaults.standard.object(forKey: "city") as? String ?? ""

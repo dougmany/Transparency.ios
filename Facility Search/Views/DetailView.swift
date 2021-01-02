@@ -8,73 +8,66 @@
 import SwiftUI
 
 struct DetailView: View {
-    let selectedFacilityNumber: String
-    
-    @State var selectedFacility = FacilityDetail(CAPACITY: "", CITY: "", CONTACT: "", COUNTY: "", DISTRICTOFFICE: "", DOADDRESS: "", DOCITY: "", DOSTATE: "", DOTELEPHONE: "", DOZIPCODE: "", FACILITYNAME: "", FACILITYNUMBER: "", FACILITYTYPE: "", LASTVISITDATE: "", LICENSEEFFECTIVEDATE: "", LICENSEFIRSTDATE: "", LICENSEENAME: "", NBRALLVISITS: "", NBRCMPLTVISITS: "", NBRCMPLTTYPA: "", NBRCMPLTTYPB: "", NBRCMPLTINC: "", NBRCMPLTUNS: "", NBRCMPLTSUB: "", NBRCMPLTUNF: "", NBRINSPVISITS: "", NBRINSPTYPA: "", NBRINSPTYPB: "", NBROTHERVISITS: "", NBROTHERTYPA: "", NBROTHERTYPB: "", STATE: "", STATUS: "Loading...", STREETADDRESS: "", TELEPHONE: "", VSTDATEALL: "", VSTDATECMPLT: "", VSTDATEINSP: "", VSTDATEOTHER: "", ZIPCODE: "", TOTCMPVISITS: "", TOTSUBALG: "", TOTINCALG: "", TOTUNSALG: "", TOTUNFALG: "", TOTTYPEA: "", TOTTYPEB: "", CMPCOUNT: 0, COMPLAINTARRAY: [complaint(CONTROLNUMBER: "", APPROVEDATE: "", SUBALLEGATIONS: "", INCALLEGATIONS: "", UNSALLEGATIONS: "", UNFALLEGATIONS: "", CITTYPEA: "", CITTYPEB: "", NUMCMPVISITS: "", CMPVISITDATES: "")])
-    
+
+    @ObservedObject var viewModel : FacilityDetailViewModel
     var body: some View {
-        ScrollView {
-            VStack {
-                VStack{
-                    Text(selectedFacility.FACILITYNAME)
-                    Text(selectedFacility.STATUS)
+        switch viewModel.state {
+        case .idle:
+            Color.clear.onAppear(perform: viewModel.load)
+        case .loading:
+            Text("Loading...")
+        case .failed(let error):
+            Text("An error occured...\(error.localizedDescription)")
+        case .loaded(let selectedFacility):
+            ScrollView {
+                VStack {
+                    VStack{
+                        Text(selectedFacility.FACILITYNAME)
+                        Text(selectedFacility.STATUS)
+                        Divider()
+                        VStack {
+                            HStack{
+                                Text(selectedFacility.STREETADDRESS)
+                                Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
+                            }
+                            Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
+                            Link(selectedFacility.TELEPHONE, destination: URL(string: "tel:\(selectedFacility.telephoneDigits)")!)
+                        }
+                    }
+                    Divider()
+                    HStack {
+                        VStack(alignment: .trailing) {
+                            Text("Licensee Name:")
+                            Text("Facililty Number:")
+                            Text("Capacity:")
+                            Text("Facillity Type:")
+                        }
+                        VStack(alignment: .leading) {
+                            Text(selectedFacility.LICENSEENAME)
+                            Text(selectedFacility.FACILITYNUMBER)
+                            Text(selectedFacility.CAPACITY)
+                            Text(selectedFacility.FACILITYTYPE)
+                        }
+                    }
                     Divider()
                     VStack {
-                        HStack{
-                            Text(selectedFacility.STREETADDRESS)
-                            Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
+                        Text("For information about this facility")
+                        Text("Contact State Licensing Office")
+                        VStack {
+                            Text(selectedFacility.DISTRICTOFFICE)
+                            HStack{
+                                Text(selectedFacility.DOADDRESS)
+                                Link(destination: URL(string: selectedFacility.doMapLink)!, label: {Image(systemName: "map")})
+                            }
+                            Text("\(selectedFacility.DOCITY), \(selectedFacility.DOSTATE) \(selectedFacility.DOZIPCODE)")
+                            Link(selectedFacility.DOTELEPHONE, destination: URL(string: "tel:\(selectedFacility.doTelephoneDigits)")!)
                         }
-                        Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
-                        Link(selectedFacility.TELEPHONE, destination: URL(string: "tel:\(selectedFacility.telephoneDigits)")!)
                     }
-                }
-                Divider()
-                HStack {
-                    VStack(alignment: .trailing) {
-                        Text("Licensee Name:")
-                        Text("Facililty Number:")
-                        Text("Capacity:")
-                        Text("Facillity Type:")
-                    }
-                    VStack(alignment: .leading) {
-                        Text(selectedFacility.LICENSEENAME)
-                        Text(selectedFacility.FACILITYNUMBER)
-                        Text(selectedFacility.CAPACITY)
-                        Text(selectedFacility.FACILITYTYPE)
-                    }
-                }
-                Divider()
-                VStack {
-                    Text("For information about this facility")
-                    Text("Contact State Licensing Office")
-                    VStack {
-                        Text(selectedFacility.DISTRICTOFFICE)
-                        HStack{
-                            Text(selectedFacility.DOADDRESS)
-                            Link(destination: URL(string: selectedFacility.doMapLink)!, label: {Image(systemName: "map")})
-                        }
-                        Text("\(selectedFacility.DOCITY), \(selectedFacility.DOSTATE) \(selectedFacility.DOZIPCODE)")
-                        Link(selectedFacility.DOTELEPHONE, destination: URL(string: "tel:\(selectedFacility.doTelephoneDigits)")!)
-                    }
-                }
-                Divider()
-                ReportsView(selectedFacilityNumber: selectedFacilityNumber).frame(height: 200)
-                Divider()
-                VisitsView(selectedFacility: selectedFacility)
-            }.onAppear(perform: loadData)
-            .navigationTitle(selectedFacility.FACILITYNAME)
-        }
-    }
-    
-    func loadData() {
-        DataService.shared.fetchFacilityDetail(facilityNumber: selectedFacilityNumber) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let data):
-                    selectedFacility = data
-                case .failure(let error):
-                    print(error)
-                }
+                    Divider()
+                    ReportsView(viewModel: ReportListViewModel(facilityNumber: selectedFacility.FACILITYNUMBER)).frame(height: 200)
+                    Divider()
+                    VisitsView(selectedFacility: selectedFacility)
+                }.navigationTitle(selectedFacility.FACILITYNAME)
             }
         }
     }
@@ -82,6 +75,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(selectedFacilityNumber: "111111111", selectedFacility: FacilityDetail(CAPACITY: "Capacity", CITY: "City", CONTACT: "Contact", COUNTY: "County", DISTRICTOFFICE: "DO", DOADDRESS: "DO Address", DOCITY: "DO City", DOSTATE: "DO State", DOTELEPHONE: "DO Phone", DOZIPCODE: "O Zip", FACILITYNAME: "Name", FACILITYNUMBER: "Number", FACILITYTYPE: "Type", LASTVISITDATE: "", LICENSEEFFECTIVEDATE: "", LICENSEFIRSTDATE: "", LICENSEENAME: "Lic Name", NBRALLVISITS: "", NBRCMPLTVISITS: "", NBRCMPLTTYPA: "", NBRCMPLTTYPB: "", NBRCMPLTINC: "", NBRCMPLTUNS: "", NBRCMPLTSUB: "", NBRCMPLTUNF: "", NBRINSPVISITS: "", NBRINSPTYPA: "", NBRINSPTYPB: "", NBROTHERVISITS: "", NBROTHERTYPA: "", NBROTHERTYPB: "", STATE: "State", STATUS: "Status", STREETADDRESS: "Street", TELEPHONE: "Phone", VSTDATEALL: "", VSTDATECMPLT: "", VSTDATEINSP: "", VSTDATEOTHER: "", ZIPCODE: "", TOTCMPVISITS: "", TOTSUBALG: "", TOTINCALG: "", TOTUNSALG: "", TOTUNFALG: "", TOTTYPEA: "", TOTTYPEB: "", CMPCOUNT: 0, COMPLAINTARRAY: [complaint(CONTROLNUMBER: "", APPROVEDATE: "", SUBALLEGATIONS: "", INCALLEGATIONS: "", UNSALLEGATIONS: "", UNFALLEGATIONS: "", CITTYPEA: "", CITTYPEB: "", NUMCMPVISITS: "selectedFacility", CMPVISITDATES: "")]))
+        DetailView(viewModel: FacilityDetailViewModel(facilityNumber: "111111111"))
     }
 }
