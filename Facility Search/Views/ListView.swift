@@ -23,7 +23,7 @@ struct ListView: View {
         case .loaded(let list):
             List(list, id: \.FACILITYNUMBER) { item in
                 NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.FACILITYNUMBER))) {
-                    LinkItemView(name: item.FACILITYNAME, description: item.STREETADDRESS)
+                    LinkItemView(name: item.FACILITYNAME, description: "\(item.STREETADDRESS) - \(item.ZIPCODE)")
                 }
             }.navigationTitle(selectedName)
         }
