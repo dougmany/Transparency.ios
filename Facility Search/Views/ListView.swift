@@ -21,11 +21,16 @@ struct ListView: View {
         case .failed(let error):
             Text("An error occured...\(error.localizedDescription)")
         case .loaded(let list):
-            List(list, id: \.FACILITYNUMBER) { item in
-                NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.FACILITYNUMBER))) {
-                    LinkItemView(name: item.FACILITYNAME, description: "\(item.STREETADDRESS) - \(item.ZIPCODE)")
-                }
-            }.navigationTitle(selectedName)
+            if(list.count > 0){
+                List(list, id: \.FACILITYNUMBER) { item in
+                    NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.FACILITYNUMBER))) {
+                        LinkItemView(name: item.FACILITYNAME, description: "\(item.STREETADDRESS) - \(item.ZIPCODE)")
+                    }
+                }.navigationTitle(selectedName)
+            }
+            else{
+                Text("None Found")
+            }
         }
     }
 }
