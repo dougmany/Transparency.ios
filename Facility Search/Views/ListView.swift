@@ -19,7 +19,15 @@ struct ListView: View {
         case .loading:
             Text("Loading...")
         case .failed(let error):
-            Text("An error occured...\(error.localizedDescription)")
+            if let apiError = error as? ApiError {
+                switch apiError {
+                case .badRequest:
+                    ExactNameView(selectedName: selectedName )
+                }
+            }
+            else{
+                Text("An error occured...\(error.localizedDescription)")
+            }
         case .loaded(let list):
             if(list.count > 0){
                 List(list, id: \.FACILITYNUMBER) { item in
@@ -37,6 +45,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(selectedName: "Test", viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: "")))
+        ListView(selectedName: "Test", viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: facilityType(id: 0, display_name: "", description: "", facility_name_search_mode: "", street_search_mode: "", city_search_mode: "", zip_search_mode: "", county_search_mode: "", facility_group_id: "", display_order: 0))))
     }
 }

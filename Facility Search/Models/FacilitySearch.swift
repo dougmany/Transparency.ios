@@ -23,7 +23,13 @@ struct facilitySearch: Decodable{
     var ZIPCODE: String
 }
 
+enum ApiError: Error {
+    case badRequest
+}
+
 class facilitySearchParameters: ObservableObject {
+    var type: facilityType
+    
     @Published var facType: String {
         didSet {
             UserDefaults.standard.set(facType, forKey: "facType")
@@ -77,13 +83,14 @@ class facilitySearchParameters: ObservableObject {
             "facnum": facnum
         ]
     }
-    init(facilityType: String){
-        self.facType = facilityType
+    init(facilityType: facilityType){
+        self.type = facilityType
+        self.facType = "\(facilityType.id)"
         self.facility = UserDefaults.standard.object(forKey: "facility") as? String ?? ""
-        self.Street = UserDefaults.standard.object(forKey: "Street") as? String ?? ""
-        self.city = UserDefaults.standard.object(forKey: "city") as? String ?? ""
-        self.zip = UserDefaults.standard.object(forKey: "zip") as? String ?? ""
-        self.county = UserDefaults.standard.object(forKey: "county") as? String ?? ""
+        self.Street = self.type.street_search_mode == "disabled" ? "": UserDefaults.standard.object(forKey: "Street") as? String ?? ""
+        self.city = self.type.city_search_mode == "disabled" ? "":UserDefaults.standard.object(forKey: "city") as? String ?? ""
+        self.zip = self.type.zip_search_mode == "disabled" ? "":UserDefaults.standard.object(forKey: "zip") as? String ?? ""
+        self.county = self.type.county_search_mode == "disabled" ? "":UserDefaults.standard.object(forKey: "county") as? String ?? ""
         self.facnum = UserDefaults.standard.object(forKey: "facnum") as? String ?? ""
     }
 }

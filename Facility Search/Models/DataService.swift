@@ -97,6 +97,11 @@ class DataService {
                 
                 if let httpResponse = response as? HTTPURLResponse {
                     print("API status: \(httpResponse.statusCode)")
+                    
+                    if httpResponse.statusCode == 400 {
+                        completion(.failure(ApiError.badRequest))
+                        return
+                    }
                 }
                 
                 guard let validData = data, error == nil else {

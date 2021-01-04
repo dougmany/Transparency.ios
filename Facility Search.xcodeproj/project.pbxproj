@@ -29,6 +29,7 @@
 		918A262F25A04153003F850E /* FacilityGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A262E25A04153003F850E /* FacilityGroupViewModel.swift */; };
 		918A263325A04579003F850E /* FacilitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263225A04579003F850E /* FacilitySearchViewModel.swift */; };
 		918A263825A049A5003F850E /* FacilityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263725A049A5003F850E /* FacilityDetailViewModel.swift */; };
+		918A263E25A257C5003F850E /* ExactName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263D25A257C5003F850E /* ExactName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		918A262E25A04153003F850E /* FacilityGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityGroupViewModel.swift; sourceTree = "<group>"; };
 		918A263225A04579003F850E /* FacilitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearchViewModel.swift; sourceTree = "<group>"; };
 		918A263725A049A5003F850E /* FacilityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailViewModel.swift; sourceTree = "<group>"; };
+		918A263D25A257C5003F850E /* ExactName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		9177C63C2590702600929C5C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				918A263C25A25793003F850E /* Informational */,
 				918A260125930B74003F850E /* Components */,
 				9177C5EE258E612700929C5C /* HomeView.swift */,
 				9177C6532591C20A00929C5C /* GroupView.swift */,
@@ -169,6 +172,14 @@
 				918A261025982ED1003F850E /* ReportsVIew.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		918A263C25A25793003F850E /* Informational */ = {
+			isa = PBXGroup;
+			children = (
+				918A263D25A257C5003F850E /* ExactName.swift */,
+			);
+			path = Informational;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 				918A263825A049A5003F850E /* FacilityDetailViewModel.swift in Sources */,
 				9177C5ED258E612700929C5C /* FacilitySearch3App.swift in Sources */,
 				9177C644259073FC00929C5C /* TypeView.swift in Sources */,
+				918A263E25A257C5003F850E /* ExactName.swift in Sources */,
 				9177C620258F236200929C5C /* FacilityDetail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

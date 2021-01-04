@@ -33,7 +33,9 @@ class FacilitySearchViewModel: ObservableObject {
                     self?.state = .loaded(list)
                 }
             case .failure(let error):
-                self?.state = .failed(error)
+                DispatchQueue.main.async {
+                    self?.state = .failed(error)
+                }
             }
         }
     }
