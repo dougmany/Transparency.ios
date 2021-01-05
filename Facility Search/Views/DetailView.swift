@@ -28,7 +28,7 @@ struct DetailView: View {
                         VStack {
                             HStack{
                                 Text(selectedFacility.STREETADDRESS)
-                                if(selectedFacility.STREETADDRESS != "See FAQs"){
+                                if(selectedFacility.STREETADDRESS != "See FAQs" && selectedFacility.STREETADDRESS != "Unavailable"){
                                     Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
                                 }
                             }
