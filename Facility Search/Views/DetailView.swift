@@ -28,10 +28,17 @@ struct DetailView: View {
                         VStack {
                             HStack{
                                 Text(selectedFacility.STREETADDRESS)
-                                Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
+                                if(selectedFacility.STREETADDRESS != "See FAQs"){
+                                    Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
+                                }
                             }
                             Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
-                            Link(selectedFacility.TELEPHONE, destination: URL(string: "tel:\(selectedFacility.telephoneDigits)")!)
+                            if(selectedFacility.TELEPHONE != "See FAQs"){
+                                Link(selectedFacility.TELEPHONE, destination: URL(string: "tel:\(selectedFacility.telephoneDigits)")!)
+                            }
+                            else{
+                                NavigationLink(selectedFacility.TELEPHONE, destination: FaqView())
+                            }
                         }
                     }
                     Divider()

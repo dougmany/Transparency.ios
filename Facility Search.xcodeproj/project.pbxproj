@@ -30,6 +30,8 @@
 		918A263325A04579003F850E /* FacilitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263225A04579003F850E /* FacilitySearchViewModel.swift */; };
 		918A263825A049A5003F850E /* FacilityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263725A049A5003F850E /* FacilityDetailViewModel.swift */; };
 		918A263E25A257C5003F850E /* ExactName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918A263D25A257C5003F850E /* ExactName.swift */; };
+		91954A1B25A42F8000727D0C /* FaqView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91954A1A25A42F8000727D0C /* FaqView.swift */; };
+		91954A1E25A4344B00727D0C /* GlossaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91954A1D25A4344B00727D0C /* GlossaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,8 @@
 		918A263225A04579003F850E /* FacilitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySearchViewModel.swift; sourceTree = "<group>"; };
 		918A263725A049A5003F850E /* FacilityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailViewModel.swift; sourceTree = "<group>"; };
 		918A263D25A257C5003F850E /* ExactName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactName.swift; sourceTree = "<group>"; };
+		91954A1A25A42F8000727D0C /* FaqView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqView.swift; sourceTree = "<group>"; };
+		91954A1D25A4344B00727D0C /* GlossaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlossaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				918A263D25A257C5003F850E /* ExactName.swift */,
+				91954A1A25A42F8000727D0C /* FaqView.swift */,
+				91954A1D25A4344B00727D0C /* GlossaryView.swift */,
 			);
 			path = Informational;
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 				9177C5E5258E612700929C5C /* Sources */,
 				9177C5E6258E612700929C5C /* Frameworks */,
 				9177C5E7258E612700929C5C /* Resources */,
+				91954A1825A42DA700727D0C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -246,6 +253,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		91954A1825A42DA700727D0C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9177C5E5258E612700929C5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -262,9 +289,11 @@
 				918A262F25A04153003F850E /* FacilityGroupViewModel.swift in Sources */,
 				9177C6542591C20B00929C5C /* GroupView.swift in Sources */,
 				9177C5EF258E612700929C5C /* HomeView.swift in Sources */,
+				91954A1B25A42F8000727D0C /* FaqView.swift in Sources */,
 				918A260A25946896003F850E /* ReportList.swift in Sources */,
 				9177C6382590701700929C5C /* ListView.swift in Sources */,
 				9177C62E258F23A800929C5C /* FacilityGroup.swift in Sources */,
+				91954A1E25A4344B00727D0C /* GlossaryView.swift in Sources */,
 				918A262B25A03355003F850E /* ReportListViewModel.swift in Sources */,
 				9177C626258F238900929C5C /* FacilitySearch.swift in Sources */,
 				918A263825A049A5003F850E /* FacilityDetailViewModel.swift in Sources */,

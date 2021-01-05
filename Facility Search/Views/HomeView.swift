@@ -14,7 +14,7 @@ struct ContentView: View {
         VStack{
             NavigationView {
                 VStack{
-                    Image("Logo")
+                    Link(destination: URL(string: "https://www.cdss.ca.gov")!, label: {Image("Logo")})
                     Text("CDSS Care Facility Search")
                     Form{
                         Section{
@@ -35,6 +35,10 @@ struct ContentView: View {
                                 }
                             }
                             NavigationLink("Search", destination: GroupView(viewModel: FacilityGroupViewModel()))
+                        }
+                        Section{
+                            NavigationLink("FAQs", destination: FaqView())
+                            NavigationLink("Glossary", destination: GlossaryView())
                         }
                     }
                 }
