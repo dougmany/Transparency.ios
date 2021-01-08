@@ -9,7 +9,7 @@ import Foundation
 
 class DataService {
     static let shared = DataService()
-
+    
     func createURLComponents(path: String) -> URLComponents {
         var components = URLComponents()
         components.scheme = "https"
@@ -120,33 +120,6 @@ class DataService {
         }.resume()
     }
     
-    //https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=340317938&inx=0
-    func fetchFacilityReport(facilityNumber: String, index: String, completion: @escaping (Result<String, Error>) -> Void) {
-        
-        var componentUrl = createURLComponents(path: "/transparencyapi/api/FacilityReports/")
-        componentUrl.queryItems = [ URLQueryItem(name: "facNum", value: facilityNumber), URLQueryItem(name: "inx", value: index) ]
-        
-        guard let validURL = componentUrl.url else {
-            print("URL creation failed...")
-            return
-        }
-        
-        URLSession.shared.dataTask(with: validURL) { (data, response, error) in
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                print("API status: \(httpResponse.statusCode)")
-            }
-            
-            guard let validData = data, error == nil else {
-                completion(.failure(error!))
-                return
-            }
-            
-            let data = String(decoding: validData, as: UTF8.self)
-            completion(.success(data))
-            
-        }.resume()
-    }
     
     func fetchFacilityReportList(facilityNumber: String, completion: @escaping (Result<[ReportInfo], Error>) -> Void) {
         
@@ -178,59 +151,52 @@ class DataService {
         }.resume()
     }
     
+    //https://www.ccld.dss.ca.gov/transparencyapi/api/Glossary
     //https://www.ccld.dss.ca.gov/transparencyapi/api/FAQ?mode=Public&id=full
-    func fetchFaq( completion: @escaping (Result<String, Error>) -> Void) {
-        
-        var componentUrl = createURLComponents(path: "/transparencyapi/api/faq")
-        componentUrl.queryItems = [ URLQueryItem(name: "mode", value: "Public"), URLQueryItem(name: "id", value: "full") ]
-          
-
-            guard let validURL = componentUrl.url else {
-                print("URL creation failed...")
-                return
-            }
-            
-            URLSession.shared.dataTask(with: validURL) { (data, response, error) in
-                
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("API status: \(httpResponse.statusCode)")
-                }
-                
-                guard let validData = data, error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
-
-                let data = String(decoding: validData, as: UTF8.self)
-                completion(.success(data))
-                
-            }.resume()
+    //https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=340317938&inx=0
+    
+    enum StringApi {
+        case glossary
+        case faq
+        case report(String, String)
     }
     
-    // https://www.ccld.dss.ca.gov/transparencyapi/api/Glossary
-    func fetchGlossary( completion: @escaping (Result<String, Error>) -> Void) {
+    func fetchString(apiType: StringApi, completion: @escaping (Result<String, Error>) -> Void) {
         
-        let componentUrl = createURLComponents(path: "/transparencyapi/api/glossary")
-
-            guard let validURL = componentUrl.url else {
-                print("URL creation failed...")
+        var componentUrl: URLComponents
+        switch apiType {
+        case .glossary:
+            componentUrl =  createURLComponents(path: "/transparencyapi/api/glossary")
+        case .faq:
+            componentUrl = createURLComponents(path: "/transparencyapi/api/faq")
+            componentUrl.queryItems = [ URLQueryItem(name: "mode", value: "Public"), URLQueryItem(name: "id", value: "full") ]
+        case .report(let facilityNumber, let reportIndex):
+            componentUrl = createURLComponents(path: "/transparencyapi/api/FacilityReports/")
+            componentUrl.queryItems = [ URLQueryItem(name: "facNum", value: facilityNumber), URLQueryItem(name: "inx", value: reportIndex) ]
+            
+        }
+        
+        guard let validURL = componentUrl.url else {
+            print("URL creation failed...")
+            return
+        }
+        
+        print(validURL)
+        
+        URLSession.shared.dataTask(with: validURL) { (data, response, error) in
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("API status: \(httpResponse.statusCode)")
+            }
+            
+            guard let validData = data, error == nil else {
+                completion(.failure(error!))
                 return
             }
             
-            URLSession.shared.dataTask(with: validURL) { (data, response, error) in
-                
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("API status: \(httpResponse.statusCode)")
-                }
-                
-                guard let validData = data, error == nil else {
-                    completion(.failure(error!))
-                    return
-                }
-
-                let data = String(decoding: validData, as: UTF8.self)
-                completion(.success(data))
-                
-            }.resume()
+            let data = String(decoding: validData, as: UTF8.self)
+            completion(.success(data))
+            
+        }.resume()
     }
 }

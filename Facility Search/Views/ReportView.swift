@@ -20,7 +20,7 @@ struct ReportView: View {
     }
     
     func loadData(){
-        DataService.shared.fetchFacilityReport(facilityNumber: selectedFacilityNumber, index: selectedIndex) { (result) in
+        DataService.shared.fetchString(apiType: .report(selectedFacilityNumber, selectedIndex)) { (result) in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let data):

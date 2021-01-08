@@ -17,7 +17,7 @@ struct GlossaryView: View {
     }
     
     func loadData(){
-        DataService.shared.fetchGlossary() { (result) in
+        DataService.shared.fetchString(apiType: .glossary) { (result) in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let data):

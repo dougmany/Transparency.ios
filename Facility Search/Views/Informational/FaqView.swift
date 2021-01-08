@@ -24,7 +24,7 @@ struct FaqView: View {
     }
     
     func loadData(){
-        DataService.shared.fetchFaq() { (result) in
+        DataService.shared.fetchString(apiType: .faq) { (result) in
             DispatchQueue.main.async {
                 switch result {
                     case .success(let data):
