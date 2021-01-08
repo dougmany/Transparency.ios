@@ -71,9 +71,10 @@ struct DetailView: View {
                         }
                     }
                     Divider()
-                    ReportListView(viewModel: ReportListViewModel(facilityNumber: selectedFacility.facilityNumber)).frame(height: 200)
-                    Divider()
                     VisitsView(selectedFacility: selectedFacility)
+                    Divider()
+                    ReportListView(viewModel: ReportListViewModel(facilityNumber: selectedFacility.facilityNumber)).frame(height: 200)
+                    
                 }
             }.navigationTitle("Detail")
         }
