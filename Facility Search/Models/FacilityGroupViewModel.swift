@@ -27,7 +27,9 @@ class FacilityGroupViewModel: ObservableObject {
                     self?.state = .loaded(facilityTypes)
                 }
             case .failure(let error):
-                self?.state = .failed(error)
+                DispatchQueue.main.async {
+                    self?.state = .failed(error)
+                }
             }
         }
     }

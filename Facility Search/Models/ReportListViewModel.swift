@@ -36,7 +36,9 @@ class ReportListViewModel: ObservableObject {
                     self?.state = .loaded(reportList)
                 }
             case .failure(let error):
-                self?.state = .failed(error)
+                DispatchQueue.main.async {
+                    self?.state = .failed(error)
+                }
             }
         }
     }
