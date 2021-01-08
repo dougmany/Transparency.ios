@@ -21,8 +21,8 @@ struct ReportsView: View {
         case .loaded(let reportList):
             VStack{
                 Text("Reports")
-                List(reportList, id: \.element.REPORTDATE) { index, report in
-                    NavigationLink("\(report.REPORTTITLE) - \(report.REPORTDATE)", destination: ReportView(selectedFacilityNumber: report.FACILITYNUMBER, selectedIndex: "\(index)" ))
+                List(reportList, id: \.element.date) { index, report in
+                    NavigationLink("\(report.title) - \(report.date)", destination: ReportView(selectedFacilityNumber: report.facilityNumber, selectedIndex: "\(index)" ))
                 }
             }
         }

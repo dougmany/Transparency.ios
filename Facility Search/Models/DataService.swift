@@ -9,8 +9,7 @@ import Foundation
 
 class DataService {
     static let shared = DataService()
-    fileprivate let baseURLString = "https://api.github.com"
-    
+
     func createURLComponents(path: String) -> URLComponents {
         var components = URLComponents()
         components.scheme = "https"
@@ -20,7 +19,7 @@ class DataService {
         return components
     }
     
-    func fetchFacilityGroups(completion: @escaping (Result<facilityGroups, Error>) -> Void) {
+    func fetchFacilityGroups(completion: @escaping (Result<FacilityGroups, Error>) -> Void) {
         
         let componentURL = createURLComponents(path: "/transparencyapi/api/group")
         
@@ -41,7 +40,7 @@ class DataService {
             }
             
             do {
-                let groups = facilityGroups(groups: try JSONDecoder().decode([facilityGroup].self, from: validData))
+                let groups = FacilityGroups(groups: try JSONDecoder().decode([FacilityGroup].self, from: validData))
                 
                 completion(.success(groups))
             } catch let serializationError {
@@ -60,6 +59,8 @@ class DataService {
             return
         }
         
+        print(validURL)
+        
         URLSession.shared.dataTask(with: validURL) { (data, response, error) in
             
             if let httpResponse = response as? HTTPURLResponse {
@@ -72,7 +73,7 @@ class DataService {
             }
             
             do {
-                let detailRoot = try JSONDecoder().decode(facilityDetailRoot.self, from: validData)
+                let detailRoot = try JSONDecoder().decode(FacilityDetailRoot.self, from: validData)
                 completion(.success(detailRoot.FacilityDetail))
             } catch let serializationError {
                 completion(.failure(serializationError))
@@ -81,7 +82,7 @@ class DataService {
         }.resume()
     }
     
-    func fetchFacilityList(parameters: facilitySearchParameters, completion: @escaping (Result<[facilitySearch], Error>) -> Void) {
+    func fetchFacilityList(parameters: facilitySearchParameters, completion: @escaping (Result<[FacilitySearch], Error>) -> Void) {
         
         var componentURL = createURLComponents(path: "/transparencyapi/api/FacilitySearch/")
         componentURL.queryItems = parameters.dictionaryRepresentation.map {
@@ -110,8 +111,8 @@ class DataService {
             }
             
             do {
-                let detailRoot = try JSONDecoder().decode(facilitySearchRoot.self, from: validData)
-                completion(.success(detailRoot.FACILITYARRAY))
+                let detailRoot = try JSONDecoder().decode(FacilitySearchRoot.self, from: validData)
+                completion(.success(detailRoot.facilities))
             } catch let serializationError {
                 completion(.failure(serializationError))
             }
@@ -169,7 +170,7 @@ class DataService {
             
             do {
                 let data = try JSONDecoder().decode(ReportList.self, from: validData)
-                completion(.success(data.REPORTARRAY))
+                completion(.success(data.reports))
             } catch let serializationError {
                 completion(.failure(serializationError))
             }

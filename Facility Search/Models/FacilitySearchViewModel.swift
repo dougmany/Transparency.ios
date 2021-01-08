@@ -12,7 +12,7 @@ class FacilitySearchViewModel: ObservableObject {
         case idle
         case loading
         case failed(Error)
-        case loaded([facilitySearch])
+        case loaded([FacilitySearch])
     }
     @Published private(set) var state = State.idle
      
@@ -29,7 +29,7 @@ class FacilitySearchViewModel: ObservableObject {
             case .success(let data):
                 DispatchQueue.main.async {
                     var list = data
-                    list.sort { $0.FACILITYNAME < $1.FACILITYNAME }
+                    list.sort { $0.facilityName < $1.facilityName }
                     self?.state = .loaded(list)
                 }
             case .failure(let error):

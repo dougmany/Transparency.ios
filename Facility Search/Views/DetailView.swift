@@ -22,22 +22,22 @@ struct DetailView: View {
             ScrollView {
                 VStack {
                     VStack{
-                        Text(selectedFacility.FACILITYNAME)
-                        Text(selectedFacility.STATUS)
+                        Text(selectedFacility.facilityName)
+                        Text(selectedFacility.status)
                         Divider()
                         VStack {
                             HStack{
-                                Text(selectedFacility.STREETADDRESS)
-                                if(selectedFacility.STREETADDRESS != "See FAQs" && selectedFacility.STREETADDRESS != "Unavailable"){
+                                Text(selectedFacility.street)
+                                if(selectedFacility.street != "See FAQs" && selectedFacility.street != "Unavailable"){
                                     Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
                                 }
                             }
-                            Text("\(selectedFacility.CITY), \(selectedFacility.STATE) \(selectedFacility.ZIPCODE)")
-                            if(selectedFacility.TELEPHONE != "See FAQs"){
-                                Link(selectedFacility.TELEPHONE, destination: URL(string: "tel:\(selectedFacility.telephoneDigits)")!)
+                            Text("\(selectedFacility.city), \(selectedFacility.state) \(selectedFacility.zip)")
+                            if(selectedFacility.phone != "See FAQs"){
+                                Link(selectedFacility.phone, destination: URL(string: "tel:\(selectedFacility.phoneDigits)")!)
                             }
                             else{
-                                NavigationLink(selectedFacility.TELEPHONE, destination: FaqView())
+                                NavigationLink(selectedFacility.phone, destination: FaqView())
                             }
                         }
                     }
@@ -50,10 +50,10 @@ struct DetailView: View {
                             Text("Facillity Type:")
                         }
                         VStack(alignment: .leading) {
-                            Text(selectedFacility.LICENSEENAME)
-                            Text(selectedFacility.FACILITYNUMBER)
-                            Text(selectedFacility.CAPACITY)
-                            Text(selectedFacility.FACILITYTYPE)
+                            Text(selectedFacility.licenseeName)
+                            Text(selectedFacility.facilityNumber)
+                            Text(selectedFacility.capacity)
+                            Text(selectedFacility.facilityType)
                         }
                     }
                     Divider()
@@ -61,17 +61,17 @@ struct DetailView: View {
                         Text("For information about this facility")
                         Text("Contact State Licensing Office")
                         VStack {
-                            Text(selectedFacility.DISTRICTOFFICE)
+                            Text(selectedFacility.districtOffice)
                             HStack{
-                                Text(selectedFacility.DOADDRESS)
+                                Text(selectedFacility.doAddress)
                                 Link(destination: URL(string: selectedFacility.doMapLink)!, label: {Image(systemName: "map")})
                             }
-                            Text("\(selectedFacility.DOCITY), \(selectedFacility.DOSTATE) \(selectedFacility.DOZIPCODE)")
-                            Link(selectedFacility.DOTELEPHONE, destination: URL(string: "tel:\(selectedFacility.doTelephoneDigits)")!)
+                            Text("\(selectedFacility.doCity), \(selectedFacility.doState) \(selectedFacility.doZip)")
+                            Link(selectedFacility.doPhone, destination: URL(string: "tel:\(selectedFacility.doPhoneDigits)")!)
                         }
                     }
                     Divider()
-                    ReportsView(viewModel: ReportListViewModel(facilityNumber: selectedFacility.FACILITYNUMBER)).frame(height: 200)
+                    ReportsView(viewModel: ReportListViewModel(facilityNumber: selectedFacility.facilityNumber)).frame(height: 200)
                     Divider()
                     VisitsView(selectedFacility: selectedFacility)
                 }

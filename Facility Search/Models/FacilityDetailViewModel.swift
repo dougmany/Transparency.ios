@@ -31,7 +31,9 @@ class FacilityDetailViewModel: ObservableObject {
                     self?.state = .loaded(data)
                 }
             case .failure(let error):
-                self?.state = .failed(error)
+                DispatchQueue.main.async {
+                    self?.state = .failed(error)
+                }
             }
         }
     }

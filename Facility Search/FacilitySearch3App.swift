@@ -11,7 +11,7 @@ import SwiftUI
 struct FacilitySearch3App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(parameters: facilitySearchParameters(facilityType: FacilityType(id: 0, name: "", description: "", nameSearchMode: .optional, streetSearchMode: .optional, citySearchMode: .optional, zipSearchMode: .optional, countySearchMode: .optional, groupId: "", sortOrder: 0 )))
         }
     }
 }

@@ -13,8 +13,8 @@ struct VisitsView: View {
     var body: some View {
         Group {
             VStack {
-                Text("All Visits: \(selectedFacility.NBRALLVISITS)")
-                Text(selectedFacility.VSTDATEALL)
+                Text("All Visits: \(selectedFacility.numberAllVisits)")
+                Text(selectedFacility.allVisitDates )
             }
             Divider()
             VStack{
@@ -25,27 +25,27 @@ struct VisitsView: View {
                         Text("Type B Citation:")
                     }
                     VStack{
-                        Text("\((Int(selectedFacility.NBRCMPLTTYPA) ?? 0) + (Int(selectedFacility.NBRINSPTYPA) ?? 0))")
-                        Text("\((Int(selectedFacility.NBRCMPLTTYPB) ?? 0) + (Int(selectedFacility.NBRINSPTYPB) ?? 0))")
+                        Text("\((Int(selectedFacility.numberComplaintsTypeA) ?? 0) + (Int(selectedFacility.numberInspectionsTypeA) ?? 0))")
+                        Text("\((Int(selectedFacility.numberComplaintsTypeB) ?? 0) + (Int(selectedFacility.numberInspectionsTypeB) ?? 0))")
                     }
                 }
             }
             Divider()
             VStack {
-                Text("Inspections: \(selectedFacility.NBRINSPVISITS)")
-                Text(selectedFacility.VSTDATEINSP)
+                Text("Inspections: \(selectedFacility.numberInspectionVisits)")
+                Text(selectedFacility.inspectionVisitDates)
                 HStack{
                     VStack{
                         Text("Type A Citation:")
                         Text("Type B Citation:")
                     }
                     VStack{
-                        Text("\(selectedFacility.NBRINSPTYPA)")
-                        Text("\(selectedFacility.NBRINSPTYPB)")
+                        Text("\(selectedFacility.numberInspectionsTypeA)")
+                        Text("\(selectedFacility.numberInspectionsTypeB)")
                     }
                 }
             }
-            if selectedFacility.CMPCOUNT > 0 {
+            if selectedFacility.complaintCount > 0 {
                 Divider()
                 Group{
                     VStack{
@@ -61,12 +61,12 @@ struct VisitsView: View {
                                 }
                             }
                             VStack {
-                                Text("\(selectedFacility.CMPCOUNT)")
-                                Text("\(selectedFacility.NBRCMPLTSUB)")
-                                Text("\(selectedFacility.NBRCMPLTINC)")
-                                Text("\(selectedFacility.NBRCMPLTUNS)")
+                                Text("\(selectedFacility.complaintCount)")
+                                Text("\(selectedFacility.numberComplaintsSubstantiated)")
+                                Text("\(selectedFacility.numberComplaintsInconclusive)")
+                                Text("\(selectedFacility.numberComplaintsunsubstantiated)")
                                 if selectedFacility.rcfeType {
-                                    Text("\(selectedFacility.NBRCMPLTUNF)")
+                                    Text("\(selectedFacility.numberComplaintsUnfounded)")
                                 }
                             }
                         }
@@ -77,9 +77,9 @@ struct VisitsView: View {
                                 Text("Total Complaint Visits:")
                             }
                             VStack{
-                                Text("\(selectedFacility.NBRCMPLTTYPA)")
-                                Text("\(selectedFacility.NBRCMPLTTYPB)")
-                                Text("\(selectedFacility.NBRCMPLTVISITS)")
+                                Text("\(selectedFacility.numberComplaintsTypeA)")
+                                Text("\(selectedFacility.numberComplaintsTypeB)")
+                                Text("\(selectedFacility.numberComplaintVisits)")
                             }
                         }
                     }
@@ -94,8 +94,8 @@ struct VisitsView: View {
             }
             Divider()
             VStack{
-                Text("Other Visits: \(selectedFacility.NBROTHERVISITS)")
-                Text(selectedFacility.VSTDATEOTHER)
+                Text("Other Visits: \(selectedFacility.numberOtherVisits)")
+                Text(selectedFacility.otherVisitDates)
                 HStack{
                     VStack{
                         
@@ -104,8 +104,8 @@ struct VisitsView: View {
                         
                     }
                 }
-                Text("Type A Citation: \(selectedFacility.NBROTHERTYPA)")
-                Text("Type B Citation: \(selectedFacility.NBROTHERTYPB)")
+                Text("Type A Citation: \(selectedFacility.numberOtherTypeA)")
+                Text("Type B Citation: \(selectedFacility.numberOtherTypeB)")
                 
             }
         }
@@ -114,7 +114,6 @@ struct VisitsView: View {
 
 struct VisitsView_Previews: PreviewProvider {
     static var previews: some View {
-        VisitsView(selectedFacility: FacilityDetail(CAPACITY: "Capacity", CITY: "City", CONTACT: "Contact", COUNTY: "County", DISTRICTOFFICE: "DO", DOADDRESS: "DO Address", DOCITY: "DO City", DOSTATE: "DO State", DOTELEPHONE: "DO Phone", DOZIPCODE: "O Zip", FACILITYNAME: "Name", FACILITYNUMBER: "Number", FACILITYTYPE: "Type", LASTVISITDATE: "", LICENSEEFFECTIVEDATE: "", LICENSEFIRSTDATE: "", LICENSEENAME: "Lic Name", NBRALLVISITS: "1", NBRCMPLTVISITS: "1", NBRCMPLTTYPA: "1", NBRCMPLTTYPB: "1", NBRCMPLTINC: "1", NBRCMPLTUNS: "1", NBRCMPLTSUB: "1", NBRCMPLTUNF: "1", NBRINSPVISITS: "1", NBRINSPTYPA: "1", NBRINSPTYPB: "1", NBROTHERVISITS: "1", NBROTHERTYPA: "1", NBROTHERTYPB: "1", STATE: "State", STATUS: "Status", STREETADDRESS: "Street", TELEPHONE: "Phone", VSTDATEALL: "", VSTDATECMPLT: "", VSTDATEINSP: "", VSTDATEOTHER: "", ZIPCODE: "", TOTCMPVISITS: "", TOTSUBALG: "", TOTINCALG: "", TOTUNSALG: "", TOTUNFALG: "", TOTTYPEA: "", TOTTYPEB: "", CMPCOUNT: 0, COMPLAINTARRAY: [complaint(CONTROLNUMBER: "", APPROVEDATE: "", SUBALLEGATIONS: "", INCALLEGATIONS: "", UNSALLEGATIONS: "", UNFALLEGATIONS: "", CITTYPEA: "", CITTYPEB: "", NUMCMPVISITS: "selectedFacility", CMPVISITDATES: "")]))
+        VisitsView(selectedFacility: FacilityDetail(capacity: "", city: "", contact: "", county: "", districtOffice: "", doAddress: "", doCity: "", doState: "", doPhone: "", doZip: "", facilityName: "", facilityNumber: "", facilityType: "", lastVisitDate: "", effectiveLicensedDate: "", firstLicensedDate: "", licenseeName: "", numberAllVisits: "", numberComplaintVisits: "", numberComplaintsTypeA: "", numberComplaintsTypeB: "", numberComplaintsInconclusive: "", numberComplaintsunsubstantiated: "", numberComplaintsSubstantiated: "", numberComplaintsUnfounded: "", numberInspectionVisits: "", numberInspectionsTypeA: "", numberInspectionsTypeB: "", numberOtherVisits: "", numberOtherTypeA: "", numberOtherTypeB: "", state: "", status: "", street: "", phone: "", allVisitDates: "", completVisitDates: "", inspectionVisitDates: "", otherVisitDates: "", zip: "", totalComplaintVisits: "", totalSubstantiatedAllegations: "", totalInconclusiveAllegations: "", totalUnsubstantiatesAllegations: "", totalUnfoundedAllegations: "", totalTypeA: "", totalTypeB: "", complaintCount: 0, complaints: [Complaint(controlNumber: "", approveDate: "", substantiatedAllegations: "", inconclusiveAllegations: "", unsubstantiatedAllegations: "", unfoundedAllegations: "", citationsTypeA: "", citationsTypeB: "", numberComplaintVisits: "", complaintVisitDates: "")]))
     }
-    
 }

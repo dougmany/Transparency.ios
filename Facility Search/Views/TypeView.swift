@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TypeView: View {
-    let types: [facilityType]
+    let types: [FacilityType]
     
     var body: some View {
         List(types, id: \.id) { item in
             NavigationLink(destination: ListView( viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: item)))) {
-                LinkItemView(name: item.display_name, description: item.description)
+                LinkItemView(name: item.name, description: item.description)
             }                
         }.navigationTitle("Type")
     }
@@ -22,6 +22,6 @@ struct TypeView: View {
 
 struct TypeView_Previews: PreviewProvider {
     static var previews: some View {
-        TypeView(types: [facilityType]())
+        TypeView(types: [FacilityType]())
     }
 }

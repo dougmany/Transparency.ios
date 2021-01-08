@@ -31,7 +31,7 @@ class ReportListViewModel: ObservableObject {
                     let dateFormatter = DateFormatter();
                     var list = data
                     dateFormatter.dateFormat = "MM/dd/y??"
-                    list.sort { dateFormatter.date(from: $0.REPORTDATE) ?? Date() > dateFormatter.date(from: $1.REPORTDATE) ?? Date()}
+                    list.sort { dateFormatter.date(from: $0.date) ?? Date() > dateFormatter.date(from: $1.date) ?? Date()}
                     let reportList = list.enumerated().map({ $0 })
                     self?.state = .loaded(reportList)
                 }

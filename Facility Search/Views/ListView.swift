@@ -28,9 +28,9 @@ struct ListView: View {
             }
         case .loaded(let list):
             if(list.count > 0){
-                List(list, id: \.FACILITYNUMBER) { item in
-                    NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.FACILITYNUMBER))) {
-                        LinkItemView(name: item.FACILITYNAME, description: "\(item.STREETADDRESS) - \(item.ZIPCODE)")
+                List(list, id: \.facilityNumber) { item in
+                    NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.facilityNumber))) {
+                        LinkItemView(name: item.facilityName, description: "\(item.street) - \(item.zip)")
                     }
                 }.navigationTitle("List")
             }
@@ -43,6 +43,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: facilityType(id: 0, display_name: "", description: "", facility_name_search_mode: "", street_search_mode: "", city_search_mode: "", zip_search_mode: "", county_search_mode: "", facility_group_id: "", display_order: 0))))
+        ListView(viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: FacilityType(id: 0, name: "", description: "", nameSearchMode: .optional, streetSearchMode: .optional, citySearchMode: .optional, zipSearchMode: .optional, countySearchMode: .optional, groupId: "", sortOrder: 0))))
     }
 }

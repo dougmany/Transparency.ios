@@ -12,7 +12,7 @@ class FacilityGroupViewModel: ObservableObject {
         case idle
         case loading
         case failed(Error)
-        case loaded([facilityGroup])
+        case loaded([FacilityGroup])
     }
     @Published private(set) var state = State.idle
      
@@ -23,7 +23,7 @@ class FacilityGroupViewModel: ObservableObject {
             case .success(let data):
                 DispatchQueue.main.async {
                     var facilityTypes = data.groups
-                    facilityTypes.sort { $0.display_order < $1.display_order }
+                    facilityTypes.sort { $0.sortOrder < $1.sortOrder }
                     self?.state = .loaded(facilityTypes)
                 }
             case .failure(let error):
