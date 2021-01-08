@@ -130,12 +130,14 @@ class DataService {
             return
         }
         
+        print(validURL)
+        
         URLSession.shared.dataTask(with: validURL) { (data, response, error) in
             
             if let httpResponse = response as? HTTPURLResponse {
                 print("API status: \(httpResponse.statusCode)")
             }
-            
+                       
             guard let validData = data, error == nil else {
                 completion(.failure(error!))
                 return
@@ -143,7 +145,12 @@ class DataService {
             
             do {
                 let data = try JSONDecoder().decode(ReportList.self, from: validData)
-                completion(.success(data.reports))
+                guard data.reports.filter({ $0 == nil }).isEmpty else {
+                    completion(.success([]))
+                    return
+                }
+                completion(.success(data.reports.compactMap { $0 }))
+ 
             } catch let serializationError {
                 completion(.failure(serializationError))
             }

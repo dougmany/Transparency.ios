@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ReportsView: View {
+struct ReportListView: View {
     @ObservedObject var viewModel : ReportListViewModel
     
     var body: some View {
@@ -19,18 +19,23 @@ struct ReportsView: View {
         case .failed(let error):
             Text("An error occured...\(error.localizedDescription)")
         case .loaded(let reportList):
-            VStack{
-                Text("Reports")
-                List(reportList, id: \.element.date) { index, report in
-                    NavigationLink("\(report.title) - \(report.date)", destination: ReportView(selectedFacilityNumber: report.facilityNumber, selectedIndex: "\(index)" ))
+            if(reportList.count > 0) {
+                VStack{
+                    Text("Reports")
+                    List(reportList, id: \.element.date) { index, report in
+                        NavigationLink("\(report.title) - \(report.date)", destination: ReportView(selectedFacilityNumber: report.facilityNumber, selectedIndex: "\(index)" ))
+                    }
                 }
+            }
+            else{
+                Text("No reports")
             }
         }
     }
     
     struct Reports_Previews: PreviewProvider {
         static var previews: some View {
-            ReportsView(viewModel: ReportListViewModel(facilityNumber: "111111111"))
+            ReportListView(viewModel: ReportListViewModel(facilityNumber: "111111111"))
         }
     }
 }

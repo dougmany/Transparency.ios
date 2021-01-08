@@ -9,7 +9,7 @@ import Foundation
 
 struct ReportList: Decodable {
     var count: Int
-    var reports: [ReportInfo]
+    var reports: [ReportInfo?]
     
     enum CodingKeys: String, CodingKey {
         case count = "COUNT"
