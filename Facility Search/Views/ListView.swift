@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ListView: View {
-    var selectedName: String
-    
     @ObservedObject var viewModel: FacilitySearchViewModel
     
     var body: some View {
@@ -22,7 +20,7 @@ struct ListView: View {
             if let apiError = error as? ApiError {
                 switch apiError {
                 case .badRequest:
-                    ExactNameView(selectedName: selectedName )
+                    ExactNameView()
                 }
             }
             else{
@@ -34,7 +32,7 @@ struct ListView: View {
                     NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.FACILITYNUMBER))) {
                         LinkItemView(name: item.FACILITYNAME, description: "\(item.STREETADDRESS) - \(item.ZIPCODE)")
                     }
-                }.navigationTitle(selectedName)
+                }.navigationTitle("List")
             }
             else{
                 Text("None Found")
@@ -45,6 +43,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(selectedName: "Test", viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: facilityType(id: 0, display_name: "", description: "", facility_name_search_mode: "", street_search_mode: "", city_search_mode: "", zip_search_mode: "", county_search_mode: "", facility_group_id: "", display_order: 0))))
+        ListView(viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: facilityType(id: 0, display_name: "", description: "", facility_name_search_mode: "", street_search_mode: "", city_search_mode: "", zip_search_mode: "", county_search_mode: "", facility_group_id: "", display_order: 0))))
     }
 }

@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct ExactNameView: View {
-    var selectedName: String
-    
-    
     var body: some View {
         VStack {
             Text("  This type of facility requires an exact name match.  The format for this search is last name, first name and may (or may not) include the term: Family Child Care Home.")
@@ -32,7 +29,7 @@ struct ExactNameView: View {
     
     struct ExactNameView_Previews: PreviewProvider {
         static var previews: some View {
-            ExactNameView(selectedName: "")
+            ExactNameView()
         }
     }
 }

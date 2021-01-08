@@ -9,20 +9,19 @@ import SwiftUI
 
 struct TypeView: View {
     let types: [facilityType]
-    let selectedGroup: String
     
     var body: some View {
         List(types, id: \.id) { item in
-            NavigationLink(destination: ListView( selectedName: item.display_name, viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: item)))) {
+            NavigationLink(destination: ListView( viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: item)))) {
                 LinkItemView(name: item.display_name, description: item.description)
             }                
-        }.navigationTitle(selectedGroup)
+        }.navigationTitle("Type")
     }
 }
 
 
 struct TypeView_Previews: PreviewProvider {
     static var previews: some View {
-        TypeView(types: [facilityType](), selectedGroup: "Types")
+        TypeView(types: [facilityType]())
     }
 }

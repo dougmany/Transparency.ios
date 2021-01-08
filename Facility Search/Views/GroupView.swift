@@ -20,7 +20,7 @@ struct GroupView: View {
             Text("An error occured...\(error.localizedDescription)")
         case .loaded(let facilityTypes):
             List(facilityTypes, id: \.id) { item in
-                NavigationLink(item.display_name, destination: TypeView(types: item.facility_type.sorted { $0.display_order < $1.display_order }, selectedGroup: item.display_name))
+                NavigationLink(item.display_name, destination: TypeView(types: item.facility_type.sorted { $0.display_order < $1.display_order }))
                     .padding()
                     .navigationTitle("Groups")
             }

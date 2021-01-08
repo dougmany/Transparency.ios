@@ -74,8 +74,8 @@ struct DetailView: View {
                     ReportsView(viewModel: ReportListViewModel(facilityNumber: selectedFacility.FACILITYNUMBER)).frame(height: 200)
                     Divider()
                     VisitsView(selectedFacility: selectedFacility)
-                }.navigationTitle(selectedFacility.FACILITYNAME)
-            }
+                }
+            }.navigationTitle("Detail")
         }
     }
 }

@@ -42,7 +42,7 @@ struct ContentView: View {
                         NavigationLink("FAQs", destination: FaqView())
                         NavigationLink("Glossary", destination: GlossaryView())
                     }
-                }
+                }.navigationTitle("Home")
             }
             .navigationBarTitle("Care Facility Search")
             .navigationBarHidden(true)

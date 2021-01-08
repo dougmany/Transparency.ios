@@ -20,6 +20,7 @@ struct FaqView: View {
     var body: some View {
         HTMLStringView(htmlContent: report)
             .onAppear(perform: loadData)
+            .navigationTitle("FAQ")
     }
     
     func loadData(){
