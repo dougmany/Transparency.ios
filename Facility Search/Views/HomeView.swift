@@ -24,7 +24,7 @@ struct ContentView: View {
                         NavigationLink("Search", destination: self.parameters.facnum == "" ?
                                         AnyView(GroupView(viewModel: FacilityGroupViewModel())):
                                         AnyView(DetailView(viewModel: FacilityDetailViewModel(facilityNumber: self.parameters.facnum)))
-                        )
+                        ).disabled(parameters.facnum != "" && parameters.facnum.count != 9)
                     }
                     Section{
                         TextField("Facility Name", text: $parameters.facility)
@@ -46,7 +46,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("Care Facility Search")
             .navigationBarHidden(true)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
