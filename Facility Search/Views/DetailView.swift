@@ -26,13 +26,16 @@ struct DetailView: View {
                         Text(selectedFacility.status)
                         Divider()
                         VStack {
-                            HStack{
-                                Text(selectedFacility.street)
                                 if(selectedFacility.street != "See FAQs" && selectedFacility.street != "Unavailable"){
-                                    Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
+                                    HStack{
+                                        Text(selectedFacility.street)
+                                        Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
+                                    }
+                                    Text("\(selectedFacility.city), \(selectedFacility.state) \(selectedFacility.zip)")
                                 }
-                            }
-                            Text("\(selectedFacility.city), \(selectedFacility.state) \(selectedFacility.zip)")
+                                else{
+                                    NavigationLink(selectedFacility.street, destination: FaqView())
+                                }
                             if(selectedFacility.phone != "See FAQs"){
                                 Link(selectedFacility.phone, destination: URL(string: "tel:\(selectedFacility.phoneDigits)")!)
                             }
