@@ -30,7 +30,7 @@ struct ListView: View {
             if(list.count > 0){
                 List(list, id: \.facilityNumber) { item in
                     NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.facilityNumber))) {
-                        LinkItemView(name: item.facilityName, description: "\(item.street) - \(item.zip)")
+                        LinkItemView(name: item.facilityName, description: item.street == "See FAQs" ? item.street: "\(item.street) - \(item.zip)")
                     }
                 }.navigationTitle("List")
             }
