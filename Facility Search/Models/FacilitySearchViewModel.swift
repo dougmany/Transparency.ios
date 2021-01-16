@@ -15,11 +15,14 @@ class FacilitySearchViewModel: ObservableObject {
         case loaded([FacilitySearch])
     }
     @Published private(set) var state = State.idle
+    
+    var dissabledWithDate: [String]
      
     private let parameters: facilitySearchParameters
     
     init(parameters: facilitySearchParameters) {
         self.parameters = parameters
+        self.dissabledWithDate = parameters.dissabledWithData
     }
     
     func load() {

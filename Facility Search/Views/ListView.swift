@@ -28,6 +28,11 @@ struct ListView: View {
             }
         case .loaded(let list):
             if(list.count > 0){
+                if(viewModel.dissabledWithDate.count > 0){
+                    ForEach(viewModel.dissabledWithDate, id: \.self) { denied in
+                        Text("\(denied) search is dissabled for this type.")
+                    }
+                }
                 List(list, id: \.facilityNumber) { item in
                     NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.facilityNumber))) {
                         LinkItemView(name: item.facilityName, description: item.street == "See FAQs" ? item.street: "\(item.street) - \(item.zip)")

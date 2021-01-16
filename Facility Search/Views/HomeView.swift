@@ -28,7 +28,7 @@ struct ContentView: View {
                     }
                     Section{
                         TextField("Facility Name", text: $parameters.facility)
-                        //TextField("Street", text: $parameters.Street)
+                        TextField("Street", text: $parameters.street)
                         TextField("City", text: $parameters.city)
                         TextField("Zip", text: $parameters.zip)
                         Picker(selection: $parameters.county, label: Text("County")) {

@@ -45,6 +45,7 @@ enum ApiError: Error {
 
 class facilitySearchParameters: ObservableObject {
     var type: FacilityType
+    var dissabledWithData: [String]
     
     @Published var facType: String {
         didSet {
@@ -56,9 +57,9 @@ class facilitySearchParameters: ObservableObject {
             UserDefaults.standard.set(facility, forKey: "facility")
         }
     }
-    @Published var Street: String {
+    @Published var street: String {
         didSet {
-            UserDefaults.standard.set(Street, forKey: "Street")
+            UserDefaults.standard.set(street, forKey: "street")
         }
     }
     @Published var city: String {
@@ -77,12 +78,12 @@ class facilitySearchParameters: ObservableObject {
         }
     }
     public let counties = ["","Alameda", "Alpine", "Amador","Butte","Calaveras","Colusa","Contra Costa","Del Norte","El Dorado",
-                        "Fresno","Glenn","Humboldt","Imperial","Inyo","Kern","Kings","Lake","Lassen","Los Angeles","Madera",
-                        "Marin","Mariposa","Mendocino","Merced","Modoc","Mono","Monterey","Napa","Nevada","Orange","Placer",
-                        "Plumas","Riverside","Sacramento","San Benito","San Bernardino","San Diego","San Francisco","San Joaquin",
-                        "San Luis Obispo","San Mateo","Santa Barbara","Santa Clara","Santa Cruz","Shasta","Sierra","Siskiyou",
-                        "Solano","Sonoma","Stanislaus","Sutter","Tehama","Trinity","Tulare","Tuolumne","Ventura","Yolo","Yuba"]
-
+"Fresno","Glenn","Humboldt","Imperial","Inyo","Kern","Kings","Lake","Lassen","Los Angeles","Madera",
+"Marin","Mariposa","Mendocino","Merced","Modoc","Mono","Monterey","Napa","Nevada","Orange","Placer",
+"Plumas","Riverside","Sacramento","San Benito","San Bernardino","San Diego","San Francisco","San Joaquin",
+"San Luis Obispo","San Mateo","Santa Barbara","Santa Clara","Santa Cruz","Shasta","Sierra","Siskiyou",
+"Solano","Sonoma","Stanislaus","Sutter","Tehama","Trinity","Tulare","Tuolumne","Ventura","Yolo","Yuba"]
+    
     @Published var facnum: String {
         didSet {
             UserDefaults.standard.set(facnum, forKey: "facnum")
@@ -92,7 +93,7 @@ class facilitySearchParameters: ObservableObject {
         return [
             "facType": facType,
             "facility": facility,
-            "Street": Street,
+            "Street": street,
             "city": city,
             "zip": zip,
             "county": county,
@@ -102,11 +103,44 @@ class facilitySearchParameters: ObservableObject {
     init(facilityType: FacilityType){
         self.type = facilityType
         self.facType = "\(facilityType.id)"
+        self.dissabledWithData = []
         self.facility = UserDefaults.standard.object(forKey: "facility") as? String ?? ""
-        self.Street = self.type.streetSearchMode == .disabled ? "": UserDefaults.standard.object(forKey: "Street") as? String ?? ""
-        self.city = self.type.citySearchMode == .disabled ? "": UserDefaults.standard.object(forKey: "city") as? String ?? ""
-        self.zip = self.type.zipSearchMode == .disabled ? "": UserDefaults.standard.object(forKey: "zip") as? String ?? ""
-        self.county = self.type.countySearchMode == .disabled ? "": UserDefaults.standard.object(forKey: "county") as? String ?? ""
+        self.street = ""
+        if let street: String = UserDefaults.standard.object(forKey: "street") as! String? {
+            if(street != "" && facilityType.streetSearchMode == .disabled ){
+                dissabledWithData.append("Street")
+            }
+            else{
+                self.street = street
+            }
+        }
+        self.city = ""
+        if let city: String = UserDefaults.standard.object(forKey: "city") as! String? {
+            if(city != "" && facilityType.citySearchMode == .disabled ){
+                dissabledWithData.append("City")
+            }
+            else{
+                self.city = city
+            }
+        }
+        self.zip = ""
+        if let zip: String = UserDefaults.standard.object(forKey: "zip") as! String? {
+            if(zip != "" && facilityType.zipSearchMode == .disabled ){
+                dissabledWithData.append("Zip")
+            }
+            else{
+                self.zip = zip
+            }
+        }
+        self.county = ""
+        if let county: String = UserDefaults.standard.object(forKey: "county") as! String? {
+            if(county != "" && facilityType.countySearchMode == .disabled ){
+                dissabledWithData.append("County")
+            }
+            else{
+                self.county = county
+            }
+        }
         self.facnum = UserDefaults.standard.object(forKey: "facnum") as? String ?? ""
     }
 }
