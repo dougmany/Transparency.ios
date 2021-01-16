@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     @ObservedObject var parameters: facilitySearchParameters
     
     var body: some View {
         NavigationView {
             VStack{
-                Link(destination: URL(string: "https://www.cdss.ca.gov")!, label: {
-                    Image("Logo")
-                        .padding(.top, 20)
-                })
+                Button(action: {
+                    let url = URL(string: "https://www.cdss.ca.gov")!
+                    UIApplication.shared.open( url)
+                }) {  Image("Logo") .padding(.top, 20)  }
                 Text("CDSS Care Facility Search")
                 Form{
                     Section{
@@ -42,7 +42,7 @@ struct ContentView: View {
                         NavigationLink("FAQs", destination: FaqView())
                         NavigationLink("Glossary", destination: GlossaryView())
                     }
-                }.navigationTitle("Home")
+                }.navigationBarTitle(Text("Home"))
             }
             .navigationBarTitle("Care Facility Search")
             .navigationBarHidden(true)
@@ -50,8 +50,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(parameters: facilitySearchParameters(facilityType: FacilityType(id: 0, name: "", description: "", nameSearchMode: .optional, streetSearchMode: .optional, citySearchMode: .optional, zipSearchMode: .optional, countySearchMode: .optional, groupId: "", sortOrder: 0)))
+        HomeView(parameters: facilitySearchParameters(facilityType: FacilityType(id: 0, name: "", description: "", nameSearchMode: .optional, streetSearchMode: .optional, citySearchMode: .optional, zipSearchMode: .optional, countySearchMode: .optional, groupId: "", sortOrder: 0)))
     }
 }

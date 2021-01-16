@@ -16,7 +16,7 @@ struct ReportView: View {
     var body: some View {
         HTMLStringView(htmlContent: report)
             .onAppear(perform: loadData)
-            .navigationTitle("Report")
+            .navigationBarTitle(Text("Report"))
     }
     
     func loadData(){

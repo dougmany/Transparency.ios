@@ -29,7 +29,10 @@ struct DetailView: View {
                                 if(selectedFacility.street != "See FAQs" && selectedFacility.street != "Unavailable"){
                                     HStack{
                                         Text(selectedFacility.street)
-                                        Link(destination: URL(string: selectedFacility.mapLink)!, label: {Image(systemName: "map")})
+                                        Button(action: {
+                                            let url = URL(string:  selectedFacility.mapLink)!
+                                            UIApplication.shared.open( url)
+                                        }) {Image(systemName: "map")}
                                     }
                                     Text("\(selectedFacility.city), \(selectedFacility.state) \(selectedFacility.zip)")
                                 }
@@ -37,7 +40,10 @@ struct DetailView: View {
                                     NavigationLink(selectedFacility.street, destination: FaqView())
                                 }
                             if(selectedFacility.phone != "See FAQs"){
-                                Link(selectedFacility.phone, destination: URL(string: "tel:\(selectedFacility.phoneDigits)")!)
+                                Button(action: {
+                                    let url = URL(string: "tel:\(selectedFacility.phoneDigits)")!
+                                    UIApplication.shared.open( url)
+                                }) {Text(selectedFacility.phoneDigits)}
                             }
                             else{
                                 NavigationLink(selectedFacility.phone, destination: FaqView())
@@ -67,10 +73,16 @@ struct DetailView: View {
                             Text(selectedFacility.districtOffice)
                             HStack{
                                 Text(selectedFacility.doAddress)
-                                Link(destination: URL(string: selectedFacility.doMapLink)!, label: {Image(systemName: "map")})
+                                Button(action: {
+                                    let url = URL(string:  selectedFacility.doMapLink)!
+                                    UIApplication.shared.open( url)
+                                }) {Image(systemName: "map")}
                             }
                             Text("\(selectedFacility.doCity), \(selectedFacility.doState) \(selectedFacility.doZip)")
-                            Link(selectedFacility.doPhone, destination: URL(string: "tel:\(selectedFacility.doPhoneDigits)")!)
+                            Button(action: {
+                                let url = URL(string: "tel:\(selectedFacility.doPhoneDigits)")!
+                                UIApplication.shared.open( url)
+                            }) {Text(selectedFacility.doPhoneDigits)}
                         }
                     }
                     Divider()
@@ -79,7 +91,7 @@ struct DetailView: View {
                     ReportListView(viewModel: ReportListViewModel(facilityNumber: selectedFacility.facilityNumber)).frame(height: 200)
                     
                 }
-            }.navigationTitle("Detail")
+            }.navigationBarTitle(Text("Detail"))
         }
     }
 }
@@ -89,3 +101,4 @@ struct DetailView_Previews: PreviewProvider {
         DetailView(viewModel: FacilityDetailViewModel(facilityNumber: "111111111"))
     }
 }
+
