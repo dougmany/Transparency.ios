@@ -43,7 +43,7 @@ struct DetailView: View {
                                 Button(action: {
                                     let url = URL(string: "tel:\(selectedFacility.phoneDigits)")!
                                     UIApplication.shared.open( url)
-                                }) {Text(selectedFacility.phoneDigits)}
+                                }) {Text(selectedFacility.phone)}
                             }
                             else{
                                 NavigationLink(selectedFacility.phone, destination: FaqView())
@@ -82,7 +82,7 @@ struct DetailView: View {
                             Button(action: {
                                 let url = URL(string: "tel:\(selectedFacility.doPhoneDigits)")!
                                 UIApplication.shared.open( url)
-                            }) {Text(selectedFacility.doPhoneDigits)}
+                            }) {Text(selectedFacility.doPhone)}
                         }
                     }
                     Divider()
