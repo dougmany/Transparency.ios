@@ -22,7 +22,7 @@ struct GroupView: View {
             List(facilityTypes, id: \.id) { item in
                 NavigationLink(item.name, destination: TypeView(types: item.types.sorted { $0.sortOrder < $1.sortOrder }))
                     .padding()
-                    .navigationTitle("Groups")
+                    .navigationBarTitle(Text("Groups"))
             }
         }
     }

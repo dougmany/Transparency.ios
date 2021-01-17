@@ -13,7 +13,7 @@ struct GlossaryView: View {
     var body: some View {
         HTMLStringView(htmlContent: report)
             .onAppear(perform: loadData)
-            .navigationTitle("Glossary")
+            .navigationBarTitle(Text("Glossary"))
     }
     
     func loadData(){

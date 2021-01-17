@@ -15,7 +15,7 @@ struct TypeView: View {
             NavigationLink(destination: ListView( viewModel: FacilitySearchViewModel(parameters: facilitySearchParameters(facilityType: item)))) {
                 LinkItemView(name: item.name, description: item.description)
             }                
-        }.navigationTitle("Type")
+        }.navigationBarTitle(Text("Type"))
     }
 }
 

@@ -17,11 +17,22 @@ struct ExactNameView: View {
                 Text(" ")
                 VStack(alignment: .leading) {
                     Text(" the facility directly")
-                    Link(" the State Licensing Office", destination: URL(string: "https://cdss.ca.gov/inforesources/community-care-licensing")!)
-                    Text(" the Resource and Referral Network:")
-                    Link("   http://www.rrnetwork.org/find_child_care", destination: URL(string: "http://www.rrnetwork.org/find_child_care")!)
-                    Link("   1-800-KIDS-793", destination: URL(string: "tel:18005437793")!)
-                    
+                    Button( action: {
+                        let url = URL(string: "https://cdss.ca.gov/inforesources/community-care-licensing")!
+                        UIApplication.shared.open( url )
+                    }) { Text(" the State Licensing Office")}
+                    Button(action: {
+                        let url = URL(string: "http://www.rrnetwork.org/find_child_care")!
+                        UIApplication.shared.open( url)
+                    }) {Text(" the Resource and Referral Network:")}
+                    Button(action: {
+                        let url = URL(string: "http://www.rrnetwork.org/find_child_care")!
+                        UIApplication.shared.open( url)
+                    }) {Text("   http://www.rrnetwork.org/find_child_care")}
+                    Button(action: {
+                        let url = URL(string: "tel:18005437793")!
+                        UIApplication.shared.open( url)
+                    }) {Text("   1-800-KIDS-793") }
                 }
             }
         }

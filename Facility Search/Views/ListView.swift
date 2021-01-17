@@ -37,7 +37,7 @@ struct ListView: View {
                     NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.facilityNumber))) {
                         LinkItemView(name: item.facilityName, description: item.street == "See FAQs" ? item.street: "\(item.street) - \(item.zip)")
                     }
-                }.navigationTitle("List")
+                }.navigationBarTitle(Text("List"))
             }
             else{
                 Text("None Found")
