@@ -50,7 +50,7 @@ class DataService {
         }.resume()
     }
     
-    func fetchFacilityDetail(facilityNumber: String, completion: @escaping (Result<FacilityDetail, Error>) -> Void) {
+    func fetchFacilityDetail(facilityNumber: String, completion: @escaping (Result<FacilityDetailRoot, Error>) -> Void) {
         
         let componentURL = createURLComponents(path: "/transparencyapi/api/FacilityDetail/\(facilityNumber)")
         
@@ -74,7 +74,7 @@ class DataService {
             
             do {
                 let detailRoot = try JSONDecoder().decode(FacilityDetailRoot.self, from: validData)
-                completion(.success(detailRoot.FacilityDetail))
+                completion(.success(detailRoot))
             } catch let serializationError {
                 completion(.failure(serializationError))
             }

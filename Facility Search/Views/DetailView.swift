@@ -18,12 +18,26 @@ struct DetailView: View {
             Text("Loading...")
         case .failed(let error):
             Text("An error occured...\(error.localizedDescription)")
-        case .loaded(let selectedFacility):
+        case .loaded(let selectedFacilityRoot):
+            let selectedFacility = selectedFacilityRoot.FacilityDetail
             ScrollView {
                 VStack {
                     VStack{
                         Text(selectedFacility.facilityName)
                         Text(selectedFacility.status)
+                        if(selectedFacility.firstLicensedDate == "" && selectedFacility.status == "Licensed"){
+                            Text("No date on file")
+                        }
+                        else if(selectedFacility.firstLicensedDate == "" && selectedFacility.status == "Pending"){
+                            Text("Not licensed yet.")
+                        }
+                        else{
+                            Text(selectedFacility.firstLicensedDate)
+                        }
+                        if(selectedFacilityRoot.TSO.ActionType != ""){
+                            Text("\(selectedFacilityRoot.TSO.ActionType): \(selectedFacilityRoot.TSO.PleadingDate)")
+                                .foregroundColor(.red)
+                        }
                         NavigationLink("Subscribe", destination: SubscribeView(facilityNumber: selectedFacility.facilityNumber, facilityName: selectedFacility.facilityName))
                         Divider()
                         VStack {

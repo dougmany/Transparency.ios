@@ -12,7 +12,7 @@ class FacilityDetailViewModel: ObservableObject {
         case idle
         case loading
         case failed(Error)
-        case loaded(FacilityDetail)
+        case loaded(FacilityDetailRoot)
     }
     @Published private(set) var state = State.idle
     
