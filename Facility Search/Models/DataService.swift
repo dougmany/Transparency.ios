@@ -161,11 +161,12 @@ class DataService {
     //https://www.ccld.dss.ca.gov/transparencyapi/api/Glossary
     //https://www.ccld.dss.ca.gov/transparencyapi/api/FAQ?mode=Public&id=full
     //https://www.ccld.dss.ca.gov/transparencyapi/api/FacilityReports?facNum=340317938&inx=0
-    
+    //https://www.ccld.dss.ca.gov/transparencyapi/api/EmailSubscribe?facNum=153801303&Semail=Doug.meeker@dss.ca.gov
     enum StringApi {
         case glossary
         case faq
         case report(String, String)
+        case subscribe(String, String)
     }
     
     func fetchString(apiType: StringApi, completion: @escaping (Result<String, Error>) -> Void) {
@@ -180,7 +181,9 @@ class DataService {
         case .report(let facilityNumber, let reportIndex):
             componentUrl = createURLComponents(path: "/transparencyapi/api/FacilityReports/")
             componentUrl.queryItems = [ URLQueryItem(name: "facNum", value: facilityNumber), URLQueryItem(name: "inx", value: reportIndex) ]
-            
+        case .subscribe(let facilityNumber, let email):
+             componentUrl = createURLComponents(path: "/transparencyapi/api/EmailSubscribe")
+            componentUrl.queryItems = [ URLQueryItem(name: "facilityNumber", value: facilityNumber), URLQueryItem(name: "Semail", value: email) ]
         }
         
         guard let validURL = componentUrl.url else {

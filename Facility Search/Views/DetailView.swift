@@ -24,6 +24,7 @@ struct DetailView: View {
                     VStack{
                         Text(selectedFacility.facilityName)
                         Text(selectedFacility.status)
+                        NavigationLink("Subscribe", destination: SubscribeView(facilityNumber: selectedFacility.facilityNumber, facilityName: selectedFacility.facilityName))
                         Divider()
                         VStack {
                                 if(selectedFacility.street != "See FAQs" && selectedFacility.street != "Unavailable"){

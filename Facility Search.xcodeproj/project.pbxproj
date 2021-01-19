@@ -37,6 +37,7 @@
 		917E0ED025B2611600E972C7 /* LinkItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E0ECF25B2611600E972C7 /* LinkItemView.swift */; };
 		917E0ED525B2612200E972C7 /* ReportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E0ED425B2612200E972C7 /* ReportListView.swift */; };
 		917E0EDD25B2613500E972C7 /* HtmlStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E0EDC25B2613500E972C7 /* HtmlStringView.swift */; };
+		917E0F4425B6581E00E972C7 /* SubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917E0F4325B6581E00E972C7 /* SubscribeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		917E0ECF25B2611600E972C7 /* LinkItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkItemView.swift; sourceTree = "<group>"; };
 		917E0ED425B2612200E972C7 /* ReportListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportListView.swift; sourceTree = "<group>"; };
 		917E0EDC25B2613500E972C7 /* HtmlStringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HtmlStringView.swift; sourceTree = "<group>"; };
+		917E0F4325B6581E00E972C7 /* SubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				917E0E8425B25E9200E972C7 /* ListView.swift */,
 				917E0E8625B25E9200E972C7 /* DetailView.swift */,
 				917E0E8525B25E9200E972C7 /* ReportView.swift */,
+				917E0F4325B6581E00E972C7 /* SubscribeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				917E0EA225B25EB300E972C7 /* FacilityDetailViewModel.swift in Sources */,
 				917E0ED025B2611600E972C7 /* LinkItemView.swift in Sources */,
 				917E0EB125B260C200E972C7 /* GlossaryView.swift in Sources */,
+				917E0F4425B6581E00E972C7 /* SubscribeView.swift in Sources */,
 				917E0E5125B242D700E972C7 /* SceneDelegate.swift in Sources */,
 				917E0EDD25B2613500E972C7 /* HtmlStringView.swift in Sources */,
 				917E0E8D25B25E9200E972C7 /* ReportView.swift in Sources */,
