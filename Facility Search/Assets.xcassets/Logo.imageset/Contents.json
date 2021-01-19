@@ -1,15 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "CDSS logo-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "CDSS logo.png",
+      "filename" : "CDSS logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "CDSS logo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
