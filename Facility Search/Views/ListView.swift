@@ -33,6 +33,10 @@ struct ListView: View {
                         Text("\(denied) search is dissabled for this type.")
                     }
                 }
+                if  list.count == 250 {
+                    Text("Your search returned more data than allowed for display (limit 250 facilities).")
+                    Text("You may want to add additional criteria to refine your search.")
+                }
                 List(list, id: \.facilityNumber) { item in
                     NavigationLink(destination: DetailView(viewModel: FacilityDetailViewModel(facilityNumber: item.facilityNumber))) {
                         LinkItemView(name: item.facilityName, description: item.street == "See FAQs" ? item.street: "\(item.street) - \(item.zip)")
