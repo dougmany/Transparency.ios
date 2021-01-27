@@ -28,8 +28,8 @@ struct ListView: View {
             }
         case .loaded(let list):
             if(list.count > 0){
-                if(viewModel.dissabledWithDate.count > 0){
-                    ForEach(viewModel.dissabledWithDate, id: \.self) { denied in
+                if(viewModel.dissabledWithData.count > 0){
+                    ForEach(viewModel.dissabledWithData, id: \.self) { denied in
                         Text("\(denied) search is dissabled for this type.")
                     }
                 }

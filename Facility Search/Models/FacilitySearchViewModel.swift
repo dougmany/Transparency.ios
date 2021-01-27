@@ -16,13 +16,29 @@ class FacilitySearchViewModel: ObservableObject {
     }
     @Published private(set) var state = State.idle
     
-    var dissabledWithDate: [String]
+    var dissabledWithData: [String] {
+        var dwdList: [String] = []
+
+        if(parameters.street != "" && parameters.type.streetSearchMode == .disabled ){
+            dwdList.append("Street")
+        }
+        if(parameters.city != "" && parameters.type.citySearchMode == .disabled ){
+            dwdList.append("City")
+        }
+        if(parameters.zip != "" && parameters.type.zipSearchMode == .disabled ){
+            dwdList.append("Zip")
+        }
+        if(parameters.county != "" && parameters.type.countySearchMode == .disabled ){
+            dwdList.append("County")
+        }
+        
+        return dwdList
+    }
      
     private let parameters: facilitySearchParameters
     
     init(parameters: facilitySearchParameters) {
         self.parameters = parameters
-        self.dissabledWithDate = parameters.dissabledWithData
     }
     
     func load() {
